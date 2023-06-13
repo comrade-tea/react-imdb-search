@@ -1,0 +1,25 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+@import "styles/header"
+@import "styles/page"
+@import "styles/card"
+
+body
+  @apply bg-dark
+
+section + section
+  margin-top: 60px
+
+.section-title
+  @apply text-2xl font-semibold mb-5
+  
+.input
+  @apply border-dark border
+  width: 100%
+  height: 40px
+  padding: 0 10px
+  
+.sidebar
+  @apply bg-light text-dark
