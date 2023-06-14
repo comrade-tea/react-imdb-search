@@ -1,7 +1,7 @@
-import {Input} from "@/UI/Input.jsx";
-import {getConfig, getTopRated} from "../api/getConfig.js";
+import {Input} from "@/components/UI/Input.jsx";
+import {getConfig, getTopRated} from "@/api/getData.js";
 import {useQuery, useQueryClient} from "react-query";
-import Card from "@/Card.jsx";
+import Card from "@/components/Card.jsx";
 
 const Content = () => {
     // Queries
@@ -21,6 +21,7 @@ const Content = () => {
 
             <section>
                 <h3 className="section-title">Results:</h3>
+                {/*// ↓ extract ↓ */}
                 <ul className="grid grid-cols-4 gap-[40px]">
                     {data && data.results.map(movie => (
                         <li key={movie.id}>

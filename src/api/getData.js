@@ -10,7 +10,7 @@ async function getConfig() {
     try {
         const response = await fetch("https://api.themoviedb.org/3/configuration", options);
         const json = await response.json();
-        console.log("--config--", json);
+        // console.log("--config--", json);
         return json;
 
     } catch (error) {
@@ -25,7 +25,7 @@ async function getTopRated() {
             options
         );
         const json = await response.json();
-        console.log("----", json);
+        // console.log("----", json);
         return json;
 
     } catch (error) {
@@ -33,4 +33,20 @@ async function getTopRated() {
     }
 }
 
-export {getConfig, getTopRated}
+async function getMovie(id) {
+    try {
+        const response = await fetch(
+            `https://api.themoviedb.org/3/movie/${id}?language=ru-US&append_to_response=videos`,
+            options
+        );
+        const json = await response.json();
+        console.log("----", json);
+        return json;
+
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+export {getConfig, getTopRated, getMovie}

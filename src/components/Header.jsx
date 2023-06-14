@@ -1,6 +1,5 @@
-import Sidebar from "@/Sidebar.jsx";
-import Navigation from "@/layout/Navigation.jsx";
-import logoSrc from "/src/assets/react.svg" 
+import Navigation from "@/components/layout/Navigation.jsx";
+import logoSrc from "@/assets/react.svg" 
 
 const Header = () => {
     return (
@@ -10,12 +9,12 @@ const Header = () => {
                 
                 <Navigation/>
                 
-                <div className="header__lang">
-                    <select>
-                        <option value="en" selected>en</option>
-                        <option value="ru">ru</option>
-                    </select>
-                </div>
+                {/*<div className="header__lang">*/}
+                {/*    <select>*/}
+                {/*        <option value="en" selected>en</option>*/}
+                {/*        <option value="ru">ru</option>*/}
+                {/*    </select>*/}
+                {/*</div>*/}
             </div>
         </header>
     )

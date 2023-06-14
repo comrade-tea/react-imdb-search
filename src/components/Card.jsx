@@ -1,6 +1,5 @@
 import {Link} from "react-router-dom";
-import Sidebar from "@/Sidebar.jsx";
-import MovieDetails from "@/pages/MovieDetails.jsx";
+import MovieDetails from "@/components/pages/MovieDetails.jsx";
 
 const Card = ({movie}) => {
     return (
