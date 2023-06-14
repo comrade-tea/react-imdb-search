@@ -1,7 +1,7 @@
-import {Input} from "@/components/UI/Input.jsx";
+import {Input} from "@/components/UI/Form/Input.jsx";
 import {getConfig, getTopRated} from "@/api/getData.js";
 import {useQuery, useQueryClient} from "react-query";
-import Card from "@/components/Card.jsx";
+import CardMovie from "@/components/cards/CardMovie.jsx";
 
 const Content = () => {
     // Queries
@@ -25,7 +25,7 @@ const Content = () => {
                 <ul className="grid grid-cols-4 gap-[40px]">
                     {data && data.results.map(movie => (
                         <li key={movie.id}>
-                            <Card movie={movie}/>
+                            <CardMovie movie={movie}/>
                         </li>
                     ))}
                 </ul>

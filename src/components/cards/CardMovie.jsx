@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import MovieDetails from "@/components/pages/MovieDetails.jsx";
 
-const Card = ({movie}) => {
+const CardMovie = ({movie}) => {
     return (
         <Link to={`/movie/${movie.id}`} element={<MovieDetails/>} className="card">
             <div className="card__img-w">
@@ -17,4 +17,4 @@ const Card = ({movie}) => {
         </Link>
     )
 }
-export default Card
+export default CardMovie

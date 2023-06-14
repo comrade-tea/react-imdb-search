@@ -7,30 +7,11 @@ import {FaArrowLeft} from "react-icons/fa";
 import Plyr, {usePlyr} from "plyr-react";
 import "plyr-react/plyr.css";
 import {forwardRef, useState} from "react";
+import Trailers from "@/components/sections/Trailers.jsx";
 
 function Loader() {
     return <p>loading..</p>
 }
-
-const videoSrc = {
-    type: "video",
-    sources: [
-        {
-            src: "yWtFb9LJs3o",
-            provider: "youtube"
-        },
-    ]
-};
-
-const PlyrRef = forwardRef((props, ref) => {
-    const {source, options = null, ...rest} = props
-    const raptorRef = usePlyr(ref, {
-        source,
-        options,
-    })
-    return <video ref={raptorRef} className="plyr-react plyr" {...rest} />
-})
-
 
 const MovieDetails = () => {
     const [test, setTest] = useState(0);
@@ -40,8 +21,6 @@ const MovieDetails = () => {
     const movieTime = toHoursAndMinutes(data?.runtime);
 
     const navigate = useNavigate();
-
-  
 
 
     return (
@@ -96,17 +75,7 @@ const MovieDetails = () => {
                         </tbody>
                     </table>
 
-                    <h3 className="section-title">Trailers:</h3>
-
-                    <div className="videos">
-                        <PlyrRef source={videoSrc}/>
-                        
-                        <ul>
-                            {data.videos?.results?.map(trailer => (
-                                <li key={trailer.id}>{trailer.name}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    {data.videos?.results?.length > 0 && <Trailers trailers={data.videos.results} />}
                 </>
             }
         </div>

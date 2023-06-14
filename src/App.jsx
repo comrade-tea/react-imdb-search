@@ -1,9 +1,8 @@
-import {useState} from "react";
 import {QueryClient, QueryClientProvider,} from 'react-query'
-import Header from "@/components/Header.jsx";
-import Sidebar from "@/components/Sidebar.jsx";
-import Content from "@/components/Content.jsx";
-import {Footer} from "@/components/Footer.jsx";
+import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar.jsx";
+import Content from "@/components/layout/Content.jsx";
+import {Footer} from "@/components/layout/Footer.jsx";
 import {Route, Routes} from "react-router-dom";
 import MovieDetails from "@/components/pages/MovieDetails.jsx";
 
