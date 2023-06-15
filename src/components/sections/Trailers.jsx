@@ -1,21 +1,45 @@
 import VideoPlayer from "@/components/UI/VideoPlayer.jsx";
+import {useCallback, useMemo, useRef, useState} from "react";
+import {If} from "@/utils/utils.js";
 
 const Trailers = ({trailers}) => {
-    const videoSrc = {type: "video", sources: [{src: "yWtFb9LJs3o", provider: "youtube"},]};
+    const playerRef = useRef()
+    const videoSrc = useMemo(() => (
+        trailers?.map(trailer => (
+            {
+                type: "video",
+                sources: [{
+                    src: trailer.key,
+                    provider: trailer.site?.toLowerCase()
+                }
+]            }
+        ))
+    ), [])
     
+    const [activeIndex, setActiveIndex] = useState(0);
+    
+    const onButtonClick = useCallback((trailerIndex) => {
+        setActiveIndex(trailerIndex);
+    }, []);
+
     return (
         <>
             <h3 className="section-title">Trailers:</h3>
 
             <div className="grid-video">
                 <div className="grid-video__col grid-video__col--player">
-                    <VideoPlayer source={videoSrc}/>
+                    {videoSrc.length > 0 && <VideoPlayer source={videoSrc[activeIndex]} ref={playerRef}/>}
                 </div>
 
                 <div className="grid-video__col grid-video__col--list">
                     <ul className="video-list">
-                        {trailers.map(trailer => (
-                            <li className="video-list__item" key={trailer.id}>{trailer.name}</li>
+                        {trailers.map((trailer, index) => (
+                            <li className="video-list__item" key={trailer.id}>
+                                <button className={`btn btn--small ${If(index === activeIndex, "btn--active")}`} 
+                                        onClick={() => onButtonClick(index)}>
+                                    {trailer.name}
+                                </button>
+                            </li>
                         ))}
                     </ul>
                 </div>

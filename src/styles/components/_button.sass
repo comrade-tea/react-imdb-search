@@ -1,17 +1,31 @@
 .btn
-  display: inline-flex
+  $this: &
+  display: flex
   align-items: center
+  text-align: left
   padding: 10px 20px
   @apply rounded
   &--dark
   &:not(&--dark)
     @apply bg-light text-dark
+    &#{$this}--active
+      @apply bg-bright
+      
     
+.btn--small
+  width: 100%
+  font-size: 14px
+  line-height: 1.4
+  padding: 6px 14px
+  
+//.btn--active
+  background: blueviolet!important
+  
 .grid-video
   display: flex
   &__col
-    
     &--player
       flex: 1
     &--list
       flex: 0 0 260px
+      padding-left: 20px

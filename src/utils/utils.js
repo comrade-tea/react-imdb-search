@@ -5,4 +5,6 @@ function toHoursAndMinutes(totalMinutes) {
     return { hours, minutes };
 }
 
-export {toHoursAndMinutes}
+const If = (condition, cssTrue, cssFalse = "") => condition ? cssTrue : cssFalse
+
+export {toHoursAndMinutes, If}

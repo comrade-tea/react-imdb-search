@@ -18,7 +18,7 @@ const Content = () => {
                     <Input attributes={{placeholder: "Search by regex"}}/>
                 </div>
             </section>
-
+            
             <section>
                 <h3 className="section-title">Results:</h3>
                 {/*// ↓ extract ↓ */}

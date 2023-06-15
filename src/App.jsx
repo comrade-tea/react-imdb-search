@@ -24,10 +24,11 @@ function App() {
                     <div className="container mx-auto">
                         <div className="flex gap-[20px]">
 
-                            <Sidebar/>
+                            <Routes>
+                                <Route path={"/"} element={<Sidebar/>}></Route>
+                            </Routes>
 
                             <div className="content">
-                                
                                 <Routes>
                                     <Route path={"/"} element={<Content/>}></Route>
                                     <Route path={"/movie/:id"} element={<MovieDetails/>}></Route>

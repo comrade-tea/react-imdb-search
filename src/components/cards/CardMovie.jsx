@@ -6,7 +6,8 @@ const CardMovie = ({movie}) => {
         <Link to={`/movie/${movie.id}`} element={<MovieDetails/>} className="card">
             <div className="card__img-w">
                 <img className="card__img-w" 
-                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                     src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
+                     style={{aspectRatio: 2/3}}
                      alt={movie.title}/>
             </div>
             <div className="card__head">
