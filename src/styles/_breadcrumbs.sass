@@ -1,0 +1,15 @@
+.breadcrumbs
+  @apply mt-6 mb-10
+  min-height: 24px
+  &__list
+    @apply flex gap-2
+  &__item
+    &:nth-child(1n+2)
+      &:before
+        content: ">"
+        vertical-align: baseline
+        @apply me-2
+    &:last-child
+      a
+        @apply opacity-80 border-b
+        pointer-events: none

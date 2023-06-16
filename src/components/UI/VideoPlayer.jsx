@@ -1,5 +1,6 @@
 import {forwardRef} from "react";
 import {usePlyr} from "plyr-react";
+import "plyr-react/plyr.css";
 
 const VideoPlayer = forwardRef((props, ref) => {
     const {source, options = null, ...rest} = props

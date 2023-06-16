@@ -3,6 +3,7 @@
 @tailwind utilities
 
 @import "styles/header"
+@import "styles/breadcrumbs"
 @import "styles/page"
 @import "styles/card"
 @import "styles/sidebar"
@@ -32,3 +33,6 @@ section + section
   @apply w-full text-xl
   td
     @apply border-b py-2
+
+.link
+  @apply hover:text-secondary transition-colors

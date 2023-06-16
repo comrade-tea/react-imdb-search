@@ -1,12 +1,10 @@
+import {useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {useQuery} from "react-query";
 import {getConfig, getMovie} from "@/api/getData.js";
 import {toHoursAndMinutes} from "@/utils/utils.js";
 import {FaArrowLeft, FaDownload, FaMagnet} from "react-icons/fa";
 
-import Plyr, {usePlyr} from "plyr-react";
-import "plyr-react/plyr.css";
-import {forwardRef, useState} from "react";
 import Trailers from "@/components/sections/Trailers.jsx";
 
 function Loader() {
@@ -14,6 +12,8 @@ function Loader() {
 }
 
 const MovieDetails = () => {
+    //todo: тут скорее из лоадера закидывать данные, а не через react query?
+    
     const [test, setTest] = useState(0);
 
     const {id} = useParams();
@@ -96,3 +96,8 @@ const MovieDetails = () => {
     )
 }
 export default MovieDetails
+
+function MovieDetailsLoader({params}) {
+    return getMovie(params.id)
+}
+export {MovieDetailsLoader}

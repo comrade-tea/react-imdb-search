@@ -1,9 +1,18 @@
+import {Input} from "@/components/UI/Form/Input.jsx";
+
 const Sidebar = () => {
 	return (
 		<aside className="sidebar">
-			<h3 className="section-title">Filters:</h3>
+			<div>
+				<h3 className="section-title">Search:</h3>
+				<div>
+					<Input attributes={{placeholder: "Search by regex"}}/>
+				</div>
+			</div>
 
-			genre/year/actor
+			<div><h3 className="section-title">Filters:</h3>
+				<div>genre/year/actor</div>
+			</div>
 		</aside>
 	)
 }

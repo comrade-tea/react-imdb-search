@@ -11,20 +11,8 @@ const Content = () => {
     const {data, isLoading, isFetched} = useQuery('top-ratedQuery', getTopRated)
     // const config = useQuery("config", getConfig)
     
-    // useEffect(() => {
-    //     console.log(config.data)
-    // }, [config.isFetched]);
-
-    
     return (
         <>
-            <section>
-                <h3 className="section-title">Search:</h3>
-                <div>
-                    <Input attributes={{placeholder: "Search by regex"}}/>
-                </div>
-            </section>
-            
             <section>
                 <h3 className="section-title">Results:</h3>
                 {/*// ↓ extract ↓ */}
@@ -38,10 +26,6 @@ const Content = () => {
             </section>
 
             <div className="mt-5 text-right">pagination? 1 \ 2 \ 3</div>
-
-            <div>
-                {/*<h3 className="text-2xl">Related Projects</h3>*/}
-            </div>
         </>
 )
 }
