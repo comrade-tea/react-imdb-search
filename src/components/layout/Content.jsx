@@ -2,14 +2,20 @@ import {Input} from "@/components/UI/Form/Input.jsx";
 import {getConfig, getTopRated} from "@/api/getData.js";
 import {useQuery, useQueryClient} from "react-query";
 import CardMovie from "@/components/cards/CardMovie.jsx";
+import {useEffect} from "react";
 
 const Content = () => {
     // Queries
     const queryClient = useQueryClient()
     // const query = useQuery('movies', getMovies)
-    const {data, isLoading, isFetched} = useQuery('topRatedQuery', getTopRated)
+    const {data, isLoading, isFetched} = useQuery('top-ratedQuery', getTopRated)
     // const config = useQuery("config", getConfig)
+    
+    // useEffect(() => {
+    //     console.log(config.data)
+    // }, [config.isFetched]);
 
+    
     return (
         <>
             <section>

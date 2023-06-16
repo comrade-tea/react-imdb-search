@@ -9,10 +9,7 @@ const options = {
 async function getConfig() {
     try {
         const response = await fetch("https://api.themoviedb.org/3/configuration", options);
-        const json = await response.json();
-        // console.log("--config--", json);
-        return json;
-
+        return await response.json();
     } catch (error) {
         console.error(error);
     }

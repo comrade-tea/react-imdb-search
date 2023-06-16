@@ -14,7 +14,7 @@
 
 
 body
-  @apply bg-dark
+  @apply bg-primary text-white
 
 section + section
   margin-top: 60px
@@ -23,9 +23,12 @@ section + section
   @apply text-2xl font-semibold mb-5
   
 .input
-  @apply border-dark border
+  @apply border-primary border
   width: 100%
   height: 40px
   padding: 0 10px
   
-
+.table-lined
+  @apply w-full text-xl
+  td
+    @apply border-b py-2

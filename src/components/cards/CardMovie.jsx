@@ -7,7 +7,9 @@ const CardMovie = ({movie}) => {
             <div className="card__img-w">
                 <img className="card__img-w" 
                      src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
-                     style={{aspectRatio: 2/3}}
+                     // style={{aspectRatio: 2/3}}
+                    width={289}
+                    height={434}
                      alt={movie.title}/>
             </div>
             <div className="card__head">

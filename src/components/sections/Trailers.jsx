@@ -24,14 +24,14 @@ const Trailers = ({trailers}) => {
 
     return (
         <>
-            <h3 className="section-title">Trailers:</h3>
-
-            <div className="grid-video">
+            <div className="grid-video mt-20">
                 <div className="grid-video__col grid-video__col--player">
                     {videoSrc.length > 0 && <VideoPlayer source={videoSrc[activeIndex]} ref={playerRef}/>}
                 </div>
 
                 <div className="grid-video__col grid-video__col--list">
+                    <h3 className="section-title">Trailers:</h3>
+                    
                     <ul className="video-list">
                         {trailers.map((trailer, index) => (
                             <li className="video-list__item" key={trailer.id}>
