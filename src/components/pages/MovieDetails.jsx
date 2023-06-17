@@ -3,7 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useQuery} from "react-query";
 import {getConfig, getMovie} from "@/api/getData.js";
 import {toHoursAndMinutes} from "@/utils/utils.js";
-import {FaArrowLeft, FaDownload, FaMagnet} from "react-icons/fa";
+import {FaArrowLeft, FaDownload, FaExternalLinkAlt, FaFilm, FaMagnet} from "react-icons/fa";
 
 import Trailers from "@/components/sections/Trailers.jsx";
 
@@ -12,8 +12,7 @@ function Loader() {
 }
 
 const MovieDetails = () => {
-    //todo: тут скорее из лоадера закидывать данные, а не через react query?
-    
+    //todo: тут скорее из лоадера закидывать данные, а не через react query?..
     const [test, setTest] = useState(0);
 
     const {id} = useParams();
@@ -66,6 +65,10 @@ const MovieDetails = () => {
                                 <FaMagnet className="me-2"/>
                                 скачать на рутрекере)) counter: {test}
                             </button>
+                            <a className="btn btn--light mt-5" href={`https://www.imdb.com/title/${data.imdb_id}/`} target="_blank" rel="noreferrer">
+                                <FaExternalLinkAlt className="me-2"/>
+                                фильм на imdb
+                            </a>
                         </div>
 
                         <div className="basis-[330px] pl-[30px]">
@@ -73,7 +76,7 @@ const MovieDetails = () => {
                                 <tbody>
                                 <tr>
                                     <td>runtime:</td>
-                                    <td>{movieTime.hours}: {movieTime.minutes}</td>
+                                    <td>{movieTime.hours}h {movieTime.minutes}min</td>
                                 </tr>
                                 <tr>
                                     <td>adult:</td>
@@ -82,6 +85,10 @@ const MovieDetails = () => {
                                 <tr>
                                     <td>rating:</td>
                                     <td>{data.vote_average} / 10</td>
+                                </tr>
+                                <tr>
+                                    <td>release date:</td>
+                                    <td>{data.release_date}</td>
                                 </tr>
                                 </tbody>
                             </table>

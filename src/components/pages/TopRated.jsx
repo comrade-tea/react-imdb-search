@@ -7,9 +7,6 @@ import Pager from "@/components/layout/Pager.jsx";
 
 
 const TopRated = () => {
-    // Queries
-    const queryClient = useQueryClient()
-    // const query = useQuery('movies', getMovies)
     const {data, isLoading, isFetched} = useQuery('top-ratedQuery', getTopRated)
     // const config = useQuery("config", getConfig)
 
@@ -17,7 +14,7 @@ const TopRated = () => {
         <div className="flex gap-[20px]">
             <Sidebar/>
 
-            <div className="flex-1">
+            <div className="flex-1"> 
                 <section>
                     <h3 className="section-title">Results:</h3>
                     
