@@ -21,7 +21,7 @@ section + section
   margin-top: 60px
 
 .section-title
-  @apply text-2xl font-semibold mb-5
+  @apply text-5xl font-semibold mb-5
   
 .input
   @apply border-primary border
@@ -35,4 +35,21 @@ section + section
     @apply border-b py-2
 
 .link
-  @apply hover:text-secondary transition-colors
+  @apply transition-colors
+  @apply border-b hover:border-transparent
+
+.subtitle
+  @apply text-3xl font-semibold mb-3
+
+::-webkit-scrollbar
+  width: 10px
+
+::-webkit-scrollbar-track
+  background-color: #ebebeb
+  -webkit-border-radius: 10px
+  border-radius: 10px
+
+::-webkit-scrollbar-thumb
+  -webkit-border-radius: 10px
+  border-radius: 10px
+  background: #6d6d6d

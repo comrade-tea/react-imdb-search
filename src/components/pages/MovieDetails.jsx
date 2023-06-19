@@ -1,17 +1,50 @@
-import {useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {useQuery} from "react-query";
 import {getConfig, getMovie} from "@/api/getData.js";
 import {toHoursAndMinutes} from "@/utils/utils.js";
 import {FaArrowLeft, FaDownload, FaExternalLinkAlt, FaFilm, FaMagnet} from "react-icons/fa";
-
 import Trailers from "@/components/sections/Trailers.jsx";
+
+// import RutrackerApi from 'rutracker-api'
+// import RutrackerApi from '@/api/rutracker'
+import RutrackerApi from "@/api/rutracker";
+import rutracker from "@/api/rutracker";
 
 function Loader() {
     return <p>loading..</p>
 }
 
 const MovieDetails = () => {
+    // useEffect(() => {
+    //     try {
+    //         const rutracker = new RutrackerApi("https://rutracker.org", {
+    //             proxy: {
+    //                 protocol: "http",
+    //                 // protocol: "https",
+    //                 host: "127.0.0.1",
+    //                 port: "5173",
+    //                 // auth: {
+    //                 //     username: "ghostship",
+    //                 //     password: "444887444"
+    //                 // }
+    //             }
+    //         })
+    //
+    //         rutracker
+    //             .login({username: "ghostship", password: "444887444"})
+    //             .then(() => {
+    //                 console.log('Authorized');
+    //             })
+    //             .catch(err => console.error(err));
+    //
+    //
+    //     } catch (error) {
+    //         console.info("----", error)
+    //     }
+    // }, [])
+    
+
     //todo: тут скорее из лоадера закидывать данные, а не через react query?..
     const [test, setTest] = useState(0);
 
@@ -43,11 +76,13 @@ const MovieDetails = () => {
                         <img className="hero__img"
                              src={`${BASE_URL}${BACKDROP_SIZE}${data.backdrop_path}`}
                              alt=""/>
-                        <h1 className="hero__title text-4xl">{data.title}</h1>
+                        <h1 className="hero__title text-6xl font-bold">{data.title}</h1>
 
                         <ul className="hero__genres genres">
                             {data?.genres?.map((genre) => (
-                                <li className="genres__item" key={genre.id}>{genre.name}</li>)
+                                <li className="genres__item" key={genre.id}>
+                                    <Link className="link" to="/movies">{genre.name}</Link>
+                                </li>)
                             )}
                         </ul>
                     </div>
@@ -55,17 +90,24 @@ const MovieDetails = () => {
                     <div className="flex mt-[40px]">
                         <div className="flex-1">
                             <div>
+                                <h4 className="subtitle">Overview:</h4>
                                 <em>{data.tagline}</em>
                                 <p className="my-5 max-w-[800px]">{data.overview}</p>
                             </div>
 
-                            <div></div>
+                            <h4 className="subtitle">Cast:</h4>
+                            <ul className="list-inside list-disc">
+                                {data.credits?.cast?.slice(0, 5).map(actor => (
+                                    <li key={actor.id}>{actor.name}</li>)
+                                )}
+                            </ul>
 
                             <button className="btn btn--light mt-5" onClick={() => setTest(test + 1)} type="button">
                                 <FaMagnet className="me-2"/>
                                 скачать на рутрекере)) counter: {test}
                             </button>
-                            <a className="btn btn--light mt-5" href={`https://www.imdb.com/title/${data.imdb_id}/`} target="_blank" rel="noreferrer">
+                            <a className="btn btn--light mt-5" href={`https://www.imdb.com/title/${data.imdb_id}/`}
+                               target="_blank" rel="noreferrer">
                                 <FaExternalLinkAlt className="me-2"/>
                                 фильм на imdb
                             </a>
@@ -107,4 +149,5 @@ export default MovieDetails
 function MovieDetailsLoader({params}) {
     return getMovie(params.id)
 }
+
 export {MovieDetailsLoader}

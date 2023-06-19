@@ -1,13 +1,13 @@
 import Sidebar from "@/components/layout/Sidebar.jsx";
 import {useQuery, useQueryClient} from "react-query";
-import {getTopRated} from "@/api/getData.js";
+import {getList} from "@/api/getData.js";
 import CardMovie from "@/components/cards/CardMovie.jsx";
 import {data} from "autoprefixer";
 import Pager from "@/components/layout/Pager.jsx";
 
 
 const TopRated = () => {
-    const {data, isLoading, isFetched} = useQuery('top-ratedQuery', getTopRated)
+    const {data, isLoading, isFetched} = useQuery(['top-rated'], getList)
     // const config = useQuery("config", getConfig)
 
     return (

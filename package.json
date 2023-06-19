@@ -19,7 +19,9 @@
     "react-icons": "^4.9.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.12.1",
-    "sass": "^1.63.3"
+    "rutracker-api-with-proxy": "^2.0.6",
+    "sass": "^1.63.3",
+    "torrent-search-api": "^2.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

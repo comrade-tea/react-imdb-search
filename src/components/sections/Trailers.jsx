@@ -23,14 +23,15 @@ const Trailers = ({trailers}) => {
     }, []);
 
     return (
-        <>
-            <div className="grid-video mt-20">
+        <div className={"mt-20"}> 
+            <h2 className="section-title">Trailers:</h2>
+            
+            <div className="grid-video ">
                 <div className="grid-video__col grid-video__col--player">
                     {videoSrc.length > 0 && <VideoPlayer source={videoSrc[activeIndex]} ref={playerRef}/>}
                 </div>
 
                 <div className="grid-video__col grid-video__col--list">
-                    <h3 className="section-title">Trailers:</h3>
                     
                     <ul className="video-list">
                         {trailers.map((trailer, index) => (
@@ -44,7 +45,7 @@ const Trailers = ({trailers}) => {
                     </ul>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 export default Trailers

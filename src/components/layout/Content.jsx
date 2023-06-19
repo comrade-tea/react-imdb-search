@@ -1,31 +1,32 @@
 import {Input} from "@/components/UI/Form/Input.jsx";
-import {getConfig, getTopRated} from "@/api/getData.js";
+import {getConfig, getList} from "@/api/getData.js";
 import {useQuery, useQueryClient} from "react-query";
 import CardMovie from "@/components/cards/CardMovie.jsx";
 import {useEffect} from "react";
+import Pager from "@/components/layout/Pager.jsx";
 
-const Content = () => {
+const Content = ({category}) => {
     // Queries
-    const queryClient = useQueryClient()
-    // const query = useQuery('movies', getMovies)
-    const {data, isLoading, isFetched} = useQuery('top-ratedQuery', getTopRated)
-    // const config = useQuery("config", getConfig)
+    const {data, isLoading, isFetched} = useQuery(
+        [`movies-${category}`],
+        () => getList(category))
     
     return (
         <>
             <section>
-                <h3 className="section-title">Results:</h3>
-                {/*// ↓ extract ↓ */}
+                <h3 className="section-title">{category}</h3>
+                
                 <ul className="grid grid-cols-4 gap-[40px]">
-                    {data && data.results.map(movie => (
+                    {isFetched && data.results.map(movie => (
                         <li key={movie.id}>
                             <CardMovie movie={movie}/>
                         </li>
                     ))}
                 </ul>
+                
+                <Pager/>
             </section>
 
-            <div className="mt-5 text-right">pagination? 1 \ 2 \ 3</div>
         </>
 )
 }

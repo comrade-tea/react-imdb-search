@@ -15,10 +15,10 @@ async function getConfig() {
     }
 }
 
-async function getTopRated() {
+async function getList(category) {
     try {
         const response = await fetch(
-            "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=3",
+            `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
             options
         );
         const json = await response.json();
@@ -33,11 +33,11 @@ async function getTopRated() {
 async function getMovie(id) {
     try {
         const response = await fetch(
-            `https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=videos`,
+            `https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=videos,credits`,
             options
         );
         const json = await response.json();
-        console.log("----", json);
+        // console.log("----", json);
         return json;
 
     } catch (error) {
@@ -46,4 +46,4 @@ async function getMovie(id) {
 
 }
 
-export {getConfig, getTopRated, getMovie}
+export {getConfig, getList, getMovie}

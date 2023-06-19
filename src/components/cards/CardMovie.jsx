@@ -3,13 +3,13 @@ import MovieDetails from "@/components/pages/MovieDetails.jsx";
 
 const CardMovie = ({movie}) => {
     return (
-        <Link to={`/movie/${movie.id}`} element={<MovieDetails/>} className="card">
+        <Link to={`/movies/${movie.id}`} element={<MovieDetails/>} className="card">
             <div className="card__img-w">
-                <img className="card__img-w" 
+                <img className="card__img-w"
                      src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
-                     // style={{aspectRatio: 2/3}}
-                    width={289}
-                    height={434}
+                    // style={{aspectRatio: 2/3}}
+                     width={289}
+                     height={434}
                      alt={movie.title}/>
             </div>
             <div className="card__head">
