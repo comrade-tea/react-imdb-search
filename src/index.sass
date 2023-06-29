@@ -11,18 +11,22 @@
 @import "styles/pages/details"
 
 @import "styles/components/button"
+@import "styles/components/loader"
 
 
 
 body
   @apply bg-primary text-white
+  overflow-y: scroll 
 
 section + section
   margin-top: 60px
 
 .section-title
-  @apply text-5xl font-semibold mb-5
-  
+  @apply text-5xl font-semibold mb-20
+  &:first-letter
+    text-transform: uppercase
+    
 .input
   @apply border-primary border
   width: 100%
@@ -37,6 +41,13 @@ section + section
 .link
   @apply transition-colors
   @apply border-b hover:border-transparent
+  
+.link-main
+  @apply transition-colors
+  @apply hover:text-secondary
+  &.active
+    @apply text-secondary
+    pointer-events: none
 
 .subtitle
   @apply text-3xl font-semibold mb-3

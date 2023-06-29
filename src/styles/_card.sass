@@ -1,6 +1,17 @@
 .card
+  $this: &
+  display: block
+  &:hover, &:focus
+
+    #{$this}__img-w img
+      transform: scale(1.1)
+    
   &__img-w
-  &__img
+    .lazy-load-image-loaded
+      overflow: hidden
+      img
+        transition: transform 2s ease-in !important
+    
   &__head
     display: flex
     justify-content: space-between

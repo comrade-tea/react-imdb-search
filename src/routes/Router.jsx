@@ -1,32 +1,10 @@
 import {createBrowserRouter, Link, Outlet} from "react-router-dom";
 import Root from "@/routes/root.jsx";
-import TopRated from "@/components/pages/TopRated.jsx";
-import MovieDetails, {MovieDetailsLoader} from "@/components/pages/MovieDetails.jsx";
-import Pager from "@/components/layout/Pager.jsx";
+import MovieDetails, {MovieDetailsLoader} from "@/components/layout/MovieDetails.jsx";
 import Home from "@/components/pages/Home.jsx";
-import Content from "@/components/layout/Content.jsx";
+import MovieList from "@/components/layout/MovieList.jsx";
 
 const router = createBrowserRouter([
-    // {
-    //     path: "*",
-    //     element: <Root/>,
-    //     // loader: rootLoader,
-    //     handle: {crumb: () => <Link className="link" to="/">Home</Link>},
-    //     children: [
-    //         {
-    //             path: "top-rated",
-    //             element: <TopRated/>,
-    //             // loader: teamLoader,
-    //             handle: {crumb: () => <Link className="link" to="top-rated">Top rated</Link>}
-    //         },
-    //         {
-    //             path: "movie/:id",
-    //             element: <MovieDetails/>,
-    //             handle: {crumb: (data) => <span>{data?.title}</span>},
-    //             loader: MovieDetailsLoader,
-    //         },
-    //     ],
-    // },
     {
         path: "/",
         element: <Root/>,
@@ -39,7 +17,7 @@ const router = createBrowserRouter([
                 element: <Home/>
             },
             {
-                path: "movies",
+                path: "movies", 
                 handle: {crumb: () => "movies"},
                 children: [
                     {
@@ -48,18 +26,18 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "top-rated",
-                        element: <Content category={"top_rated"}/>,
+                        element: <MovieList category={"top_rated"}/>,
                         handle: {crumb: () => "top rated"}
                     },
                     {
                         path: "popular",
-                        element: <Content category={"popular"}/>,
+                        element: <MovieList category={"popular"}/>,
                         handle: {crumb: () => "popular"}
                     },
                     {
                         path: "now-playing",
-                        element: <Content category={"now_playing"}/>,
-                        handle: {crumb: () => "now playing"}
+                        element: <MovieList category={"now_playing"}/>,
+                        handle: {crumb: () => "now playing"},
                     },
                     {
                         path: ":id",

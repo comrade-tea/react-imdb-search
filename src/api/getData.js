@@ -15,10 +15,10 @@ async function getConfig() {
     }
 }
 
-async function getList(category) {
+async function getList(category, page = 1) {
     try {
         const response = await fetch(
-            `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
+            `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
             options
         );
         const json = await response.json();

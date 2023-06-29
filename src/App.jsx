@@ -2,10 +2,10 @@ import {QueryClient, QueryClientProvider,} from 'react-query'
 import Header from "@/components/layout/Header";
 import Breadcrumbs from "@/components/layout/Breadcrumbs.jsx";
 import Sidebar from "@/components/layout/Sidebar.jsx";
-import Content from "@/components/layout/Content.jsx";
+import MovieList from "@/components/layout/MovieList.jsx";
 import {Footer} from "@/components/layout/Footer.jsx";
 import {Link, Route, Routes} from "react-router-dom";
-import MovieDetails from "@/components/pages/MovieDetails.jsx";
+import MovieDetails from "@/components/layout/MovieDetails.jsx";
 import Home from "@/components/pages/Home.jsx";
 import TopRated from "@/components/pages/TopRated.jsx";
 
@@ -14,37 +14,11 @@ function App() {
     return (
         <>
             <main className="my-[50px]">
-                <div className="container mx-auto px-5">
+                <div className="maw-[1300px] mx-auto px-5">
                     <div className="flex gap-[20px]">
-
-                        {/*<Routes>*/}
-                        {/*    <Route path={"/"} element={<Sidebar/>}></Route>*/}
-                        {/*</Routes>*/}
-
                         <div className="content">
 
-                            <Routes>
-                                <Route
-                                    index
-                                    path={"/"}
-                                    element={<Home/>}
-                                />
-
-                                <Route path={"/top-rated"}
-                                       element={<TopRated/>}
-                                />
-                                <Route
-                                    path={"/movie/:id"}
-                                    element={<MovieDetails/>}
-                                    handle={{
-                                        // crumb: (data) => <span>{data.threadName}</span>
-                                        crumb: (data) => <span>"BLYAT"</span>
-                                    }}
-                                />
-                            </Routes>
-
                         </div>
-
                     </div>
                 </div>
             </main>

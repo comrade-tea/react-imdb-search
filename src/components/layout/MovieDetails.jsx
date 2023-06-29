@@ -6,46 +6,11 @@ import {toHoursAndMinutes} from "@/utils/utils.js";
 import {FaArrowLeft, FaDownload, FaExternalLinkAlt, FaFilm, FaMagnet} from "react-icons/fa";
 import Trailers from "@/components/sections/Trailers.jsx";
 
-// import RutrackerApi from 'rutracker-api'
-// import RutrackerApi from '@/api/rutracker'
-import RutrackerApi from "@/api/rutracker";
-import rutracker from "@/api/rutracker";
-
 function Loader() {
     return <p>loading..</p>
 }
 
 const MovieDetails = () => {
-    // useEffect(() => {
-    //     try {
-    //         const rutracker = new RutrackerApi("https://rutracker.org", {
-    //             proxy: {
-    //                 protocol: "http",
-    //                 // protocol: "https",
-    //                 host: "127.0.0.1",
-    //                 port: "5173",
-    //                 // auth: {
-    //                 //     username: "ghostship",
-    //                 //     password: "444887444"
-    //                 // }
-    //             }
-    //         })
-    //
-    //         rutracker
-    //             .login({username: "ghostship", password: "444887444"})
-    //             .then(() => {
-    //                 console.log('Authorized');
-    //             })
-    //             .catch(err => console.error(err));
-    //
-    //
-    //     } catch (error) {
-    //         console.info("----", error)
-    //     }
-    // }, [])
-    
-
-    //todo: тут скорее из лоадера закидывать данные, а не через react query?..
     const [test, setTest] = useState(0);
 
     const {id} = useParams();
@@ -68,6 +33,7 @@ const MovieDetails = () => {
 
             {isFetched &&
                 <>
+                    <div className="custom-loader"></div>
                     <button className="btn btn--light mb-10" onClick={() => navigate(-1)}>
                         <FaArrowLeft className={"mr-4"}/> Назад
                     </button>
@@ -103,8 +69,7 @@ const MovieDetails = () => {
                             </ul>
 
                             <button className="btn btn--light mt-5" onClick={() => setTest(test + 1)} type="button">
-                                <FaMagnet className="me-2"/>
-                                скачать на рутрекере)) counter: {test}
+                                <FaMagnet className="me-2"/> counter: {test}
                             </button>
                             <a className="btn btn--light mt-5" href={`https://www.imdb.com/title/${data.imdb_id}/`}
                                target="_blank" rel="noreferrer">

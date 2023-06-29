@@ -18,7 +18,7 @@ const Breadcrumbs = () => {
 
     return (
         <div className="breadcrumbs">
-            <div className="container mx-auto px-5">
+            <div className="container">
                 {crumbs.length > 1 && <ul className="breadcrumbs__list">
                     {crumbs.map((crumb) => (crumb))}
                 </ul>}

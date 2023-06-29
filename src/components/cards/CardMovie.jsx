@@ -1,16 +1,18 @@
 import {Link} from "react-router-dom";
-import MovieDetails from "@/components/pages/MovieDetails.jsx";
+import MovieDetails from "@/components/layout/MovieDetails.jsx";
+import {LazyLoadImage} from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const CardMovie = ({movie}) => {
     return (
         <Link to={`/movies/${movie.id}`} element={<MovieDetails/>} className="card">
             <div className="card__img-w">
-                <img className="card__img-w"
-                     src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
-                    // style={{aspectRatio: 2/3}}
-                     width={289}
-                     height={434}
-                     alt={movie.title}/>
+                <LazyLoadImage
+                    src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
+                    effect={"blur"}
+                    width={280}
+                    height={420}
+                />
             </div>
             <div className="card__head">
                 <div className="card__date">{movie.release_date}</div>
