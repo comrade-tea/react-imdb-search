@@ -1,7 +1,8 @@
 import {Link} from "react-router-dom";
 import {FaArrowAltCircleLeft, FaArrowCircleLeft, FaArrowCircleRight, FaLongArrowAltLeft} from "react-icons/fa";
+import {memo} from "react";
 
-const Pager = ({currentPage, totalPages}) => {
+const Pager = memo(({currentPage, totalPages}) => {
     const MAX_ITEMS = 5
 
     const prevIndex = currentPage - 1 > 0 ? currentPage - 1 : null;
@@ -56,5 +57,5 @@ const Pager = ({currentPage, totalPages}) => {
                 </Link>}
         </div>
     )
-}
+})
 export default Pager

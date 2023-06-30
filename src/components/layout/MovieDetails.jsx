@@ -5,42 +5,37 @@ import {getConfig, getMovie} from "@/api/getData.js";
 import {toHoursAndMinutes} from "@/utils/utils.js";
 import {FaArrowLeft, FaDownload, FaExternalLinkAlt, FaFilm, FaMagnet} from "react-icons/fa";
 import Trailers from "@/components/sections/Trailers.jsx";
-
-function Loader() {
-    return <p>loading..</p>
-}
+import Loader from "@/components/UI/Loader.jsx";
 
 const MovieDetails = () => {
     const [test, setTest] = useState(0);
-
-    const {id} = useParams();
-    const {data, isLoading, isFetched} = useQuery(
-        ['movieDetails', id],
-        () => getMovie(id)
-    )
-
-    const movieTime = toHoursAndMinutes(data?.runtime);
-
+    
     const navigate = useNavigate();
-
-    const config = useQuery(["config"], getConfig)
-    const BASE_URL = config?.data?.images?.secure_base_url ?? "https://image.tmdb.org/t/p";
-    const BACKDROP_SIZE = config?.data?.images?.poster_sizes[6] ?? "original";
+    const {id} = useParams();
+    const API_CONFIG = useQuery(["config"], getConfig)
+    const {data, isLoading, isFetched} = useQuery([['movie', id], id], () => getMovie(id))
+    
+    const IMG_CONFIG = {
+        base_url: API_CONFIG?.data?.images?.secure_base_url ?? "https://image.tmdb.org/t/p",
+        backdrop_size: API_CONFIG?.data?.images?.poster_sizes[6] ?? "original",
+    }
+    
+    const movieTime = toHoursAndMinutes(data?.runtime);
+    const hasVideos = data?.videos?.results?.length > 0;
 
     return (
         <div>
             {isLoading && <Loader/>}
-
+            
             {isFetched &&
                 <>
-                    <div className="custom-loader"></div>
                     <button className="btn btn--light mb-10" onClick={() => navigate(-1)}>
                         <FaArrowLeft className={"mr-4"}/> Назад
                     </button>
 
                     <div className="hero" style={{aspectRatio: "16/9"}}>
                         <img className="hero__img"
-                             src={`${BASE_URL}${BACKDROP_SIZE}${data.backdrop_path}`}
+                             src={`${IMG_CONFIG.base_url}${IMG_CONFIG.backdrop_size}${data.backdrop_path}`}
                              alt=""/>
                         <h1 className="hero__title text-6xl font-bold">{data.title}</h1>
 
@@ -103,7 +98,8 @@ const MovieDetails = () => {
                     </div>
 
 
-                    {data.videos?.results?.length > 0 && <Trailers trailers={data.videos.results}/>}
+                    {hasVideos && 
+                        <Trailers trailers={data.videos.results}/>}
                 </>
             }
         </div>

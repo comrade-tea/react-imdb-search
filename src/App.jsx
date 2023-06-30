@@ -2,7 +2,7 @@ import {QueryClient, QueryClientProvider,} from 'react-query'
 import Header from "@/components/layout/Header";
 import Breadcrumbs from "@/components/layout/Breadcrumbs.jsx";
 import Sidebar from "@/components/layout/Sidebar.jsx";
-import MovieList from "@/components/layout/MovieList.jsx";
+import MovieCategory from "@/components/layout/MovieCategory.jsx";
 import {Footer} from "@/components/layout/Footer.jsx";
 import {Link, Route, Routes} from "react-router-dom";
 import MovieDetails from "@/components/layout/MovieDetails.jsx";

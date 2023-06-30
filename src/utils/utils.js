@@ -1,4 +1,4 @@
-function toHoursAndMinutes(totalMinutes) {
+const toHoursAndMinutes = (totalMinutes) => {
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
 
@@ -7,4 +7,6 @@ function toHoursAndMinutes(totalMinutes) {
 
 const If = (condition, cssTrue, cssFalse = "") => condition ? cssTrue : cssFalse
 
-export {toHoursAndMinutes, If}
+const stringClean = (string) => string.replace(/_/g, " ")
+
+export {toHoursAndMinutes, If, stringClean}
