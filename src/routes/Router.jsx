@@ -1,9 +1,9 @@
 import {createBrowserRouter, Link, Outlet} from "react-router-dom";
 import Root from "@/routes/root.jsx";
-import MovieDetails, {MovieDetailsLoader} from "@/components/layout/MovieDetails.jsx";
+import MovieDetails, {MovieDetailsLoader} from "@/components/pages/MovieDetails.jsx";
 import Home from "@/components/pages/Home.jsx";
-import MovieCategory from "@/components/layout/MovieCategory.jsx";
-import MovieIndex from "@/components/layout/MovieIndex.jsx";
+import MovieCategory from "@/components/pages/MovieCategory.jsx";
+import MovieIndex from "@/components/pages/MovieIndex";
 
 const router = createBrowserRouter([
     {

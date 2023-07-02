@@ -7,8 +7,6 @@ import {Footer} from "@/components/layout/Footer.jsx";
 import {Link, Route, Routes} from "react-router-dom";
 import MovieDetails from "@/components/layout/MovieDetails.jsx";
 import Home from "@/components/pages/Home.jsx";
-import TopRated from "@/components/pages/TopRated.jsx";
-
 
 function App() {
     return (

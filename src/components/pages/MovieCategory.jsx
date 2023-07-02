@@ -2,7 +2,7 @@ import {getList} from "@/api/getData.js";
 import {useQuery} from "react-query";
 import Pager from "@/components/layout/Pager.jsx";
 import {useSearchParams} from "react-router-dom";
-import MovieList from "@/components/layout/MovieList.jsx";
+import MovieList from "@/components/pages/MovieList.jsx";
 import {stringClean} from "@/utils/utils.js";
 import Loader from "@/components/UI/Loader.jsx";
 import {useState} from "react";
