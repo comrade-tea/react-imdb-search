@@ -1,6 +1,7 @@
 import {Fragment, useState} from 'react'
 import {Listbox, Transition} from '@headlessui/react'
 import {FaCaretDown, FaCheck} from "react-icons/fa";
+import {If} from "@/utils/utils.js";
 
 const people = [
     { id: 1, name: 'Durward Reynolds' },
@@ -11,15 +12,21 @@ const people = [
 ]
 
 const Select = ({genres}) => {
-    const [selectedPeople, setSelectedPeople] = useState([people[0], people[1]])
+    const [selectedPeople, setSelectedPeople] = useState([])
 
     return (
         <div className="">
             <Listbox value={selectedPeople} onChange={setSelectedPeople} multiple>
                 <div className="relative mt-1">
                     <Listbox.Button
-                        className="relative w-full cursor-default rounded-lg text-primary bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                        <span className="block truncate">{selectedPeople.map(person => person.name).join(", ")}</span>
+                        className="relative w-full py-2 pl-3 pr-10 text-left shadow-md bg-white text-primary min-h-[40px]">
+                        <span className={`block ${If(!selectedPeople.length, "text-primary--gray")}`}>
+                            {selectedPeople.length ?
+                                selectedPeople.map(person => person.name).join(", ")
+                                :
+                                "choose genres"
+                            }
+                        </span>
                         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <FaCaretDown
                   className="h-5 w-5 text-gray-400"

@@ -23,6 +23,7 @@ export default {
                 // "bright": "#b5bdbf",
                 "primary": "#2C3E50",
                 "primary--light": "#56687F",
+                "primary--gray": "#9ca3af",
                 "secondary": "#E74C3C",
                 "accent": "#3498DB",
             }
