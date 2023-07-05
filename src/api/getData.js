@@ -43,7 +43,21 @@ async function getMovie(id) {
     } catch (error) {
         console.error(error);
     }
+}
+
+async function getMovies({query, adult, page, year}) {
+    try {
+        const response = await fetch(
+            `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=${adult}&language=en-US&primary_release_year=${year}&page=${page}`,
+            options)
+        const json = await response.json();
+        // console.log("----", json);
+        return json;
+
+    } catch (error) {
+        console.error(error);
+    }
 
 }
 
-export {getConfig, getList, getMovie}
+export {getConfig, getList, getMovie, getMovies}

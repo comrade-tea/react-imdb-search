@@ -1,7 +1,17 @@
-.sidebar
-  @apply basis-[280px] p-5
-  //@apply bg-accent text-primary rounded-xl border-2
-  @apply text-secondary rounded-xl border-2 border-accent
+@use "sass:selector"
+
+=unify-parent($child)
+  @at-root #{selector.unify(&, $child)}
+    @content
+
+
+.panel
+  @apply py-4 px-3 rounded-xl border-2 border-accent
   position: sticky
-  align-self: self-start
   top: 10px
+  //height: 100%
+  
+  +unify-parent("aside")
+    align-self: self-start
+    
+    

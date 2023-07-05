@@ -3,6 +3,8 @@ import MovieDetails from "@/components/pages/MovieDetails.jsx";
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
+import notfoundImg from "@/assets/image-notfound.png"
+
 const CardMovie = ({movie}) => {
     return (
         <Link to={`/movies/${movie.id}`} element={<MovieDetails/>} className="card">
@@ -12,6 +14,7 @@ const CardMovie = ({movie}) => {
                     effect={"blur"}
                     width={280}
                     height={420}
+                    placeholderSrc={notfoundImg}
                 />
             </div>
             <div className="card__head">

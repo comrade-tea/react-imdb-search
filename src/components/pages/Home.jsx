@@ -6,7 +6,7 @@ const Home = () => {
             <div className="mt-10">
                 <p className="text-2xl mb-6">Todo:</p>
                 <ul className="list-disc">
-                    <li>router enhance</li>
+                    <li>router enhance (show query params in url?)</li>
                     <li>sorting</li>
                     <li>search bar</li>
                     <li>localization</li>
