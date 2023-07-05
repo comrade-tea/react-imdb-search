@@ -21,7 +21,7 @@ const CardMovie = ({movie}) => {
                 <div className="card__date">{movie.release_date}</div>
                 <div className="card__rate">{movie.vote_average} / 10</div>
             </div>
-            <div className="card__title">{movie.title}</div>
+            <div className="card__title" title={movie.title}>{movie.title}</div>
         </Link>
     )
 }

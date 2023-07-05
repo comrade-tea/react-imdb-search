@@ -13,15 +13,12 @@ const MovieIndex = () => {
         year: ""
     });
     
-    console.log("----", search.query, search.year)
-    
     const {data, isLoading} = useQuery(
         [`search-${search.query}`, search.page, search.adult, search.year],
         () => getMovies({...search}),
     )
-
-    // console.log("--search--", search);
-    console.log("--search--", data);
+    
+    // todo: query for genres
 
 
     return (

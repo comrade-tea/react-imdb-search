@@ -24,19 +24,21 @@ const SearchMovie = ({search, setSearch}) => {
         <form>
             <ul className="flex flex-col gap-3">
                 <li>
+                    <div className="mb-2">Movie title:</div>
                     <Input
                         onChange={(e) => searchHandler(e)}
                         value={search.query}
-                        attributes={{placeholder: "search.."}}
+                        attributes={{placeholder: "Movie title"}}
                     />
                 </li>
                 
                 <li>
+                    <div className="mb-2">Genres</div>
                     <Select/>
                 </li>
                 
                 <li>
-                    <div>Release year:</div>
+                    <div className="mb-2">Release year:</div>
                     <Input
                         onChange={(e) => yearHandler(e)}
                         value={search.year}
