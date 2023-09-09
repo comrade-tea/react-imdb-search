@@ -14,6 +14,13 @@
 @import "styles/components/loader"
 
 
+#root
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  
+  footer
+    margin-top: auto
 
 body
   @apply bg-primary text-white
@@ -48,6 +55,12 @@ section + section
   &.active
     @apply text-secondary
     pointer-events: none
+
+.link-line
+  border-bottom: 1px solid currentColor
+  transition: border-color .3s ease
+  &:hover, &:focus
+    border-color: transparent
 
 .subtitle
   @apply text-3xl font-semibold mb-3

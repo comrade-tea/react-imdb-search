@@ -11,7 +11,7 @@ const CardMovie = ({movie}) => {
             <div className="card__img-w">
                 <LazyLoadImage
                     src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
-                    effect={"blur"}
+                    effect={movie.poster_path ? "blur" : null}
                     width={280}
                     height={420}
                     placeholderSrc={notfoundImg}
@@ -19,7 +19,10 @@ const CardMovie = ({movie}) => {
             </div>
             <div className="card__head">
                 <div className="card__date">{movie.release_date}</div>
-                <div className="card__rate">{movie.vote_average} / 10</div>
+                <div className="card__rate">{movie.vote_average !== 0
+                    ? <>{movie.vote_average} / 10</> 
+                    : <>unrated</>}
+                </div>
             </div>
             <div className="card__title" title={movie.title}>{movie.title}</div>
         </Link>

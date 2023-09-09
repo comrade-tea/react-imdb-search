@@ -9,7 +9,7 @@ const Root = () => {
             <Header/>
             <Breadcrumbs/>
 
-            <main className="my-[50px]">
+            <main className="mb-[50px]">
                 <div className="container">
                     <Outlet/>
                 </div>
@@ -21,8 +21,3 @@ const Root = () => {
 }
 
 export default Root
-
-export function rootLoader() {
-    return <div>loading..</div>
-}
-
