@@ -2,10 +2,14 @@ import {Input} from "@/components/UI/Form/Input.jsx"
 import Select from "@/components/UI/Form/Select.jsx";
 import {useCallback, useState} from "react";
 import Checkbox from "@/components/UI/Form/Checkbox/Checkbox.jsx";
+import {useQuery} from "react-query";
+import {getGenres} from "@/api/getData.js";
 
 
 
 const SearchMovie = ({search, setSearch}) => {
+    const {data, status} = useQuery("genres", getGenres)
+    
     const searchHandler = (e) => {
         setSearch(prev => ({...prev, query: e.target.value}))
     };
@@ -13,11 +17,15 @@ const SearchMovie = ({search, setSearch}) => {
     const yearHandler = (e) => {
         setSearch(prev => ({...prev, year: e.target.value}))
     };
+    
+    const genresHandler = (e) => {
+        setSearch(prev => ({...prev, genres: e.target.value}))
+    };
 
     const onCheckboxChange = useCallback(() => {
         setSearch(prev => ({...prev, adult: !prev.adult}))
     }, []);
-
+    
     return <div>
         <h3 className={"text-xl font-semibold mb-5"}>Search:</h3>
 
@@ -34,7 +42,7 @@ const SearchMovie = ({search, setSearch}) => {
                 
                 <li>
                     <div className="mb-2">Genres</div>
-                    <Select/>
+                    <Select items={data?.genres} onChange={(e) => genresHandler(e)} />
                 </li>
                 
                 <li>

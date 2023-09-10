@@ -3,26 +3,18 @@ import {Listbox, Transition} from '@headlessui/react'
 import {FaCaretDown, FaCheck} from "react-icons/fa";
 import {If} from "@/utils/utils.js";
 
-const people = [
-    { id: 1, name: 'Durward Reynolds' },
-    { id: 2, name: 'Kenton Towne' },
-    { id: 3, name: 'Therese Wunsch' },
-    { id: 4, name: 'Benedict Kessler' },
-    { id: 5, name: 'Katelyn Rohan' },
-]
-
-const Select = ({genres}) => {
-    const [selectedPeople, setSelectedPeople] = useState([])
+const Select = ({items = [], onChange}) => {
+    const [selectedValues, setSelectedValues] = useState([])
 
     return (
         <div className="">
-            <Listbox value={selectedPeople} onChange={setSelectedPeople} multiple>
+            <Listbox value={selectedValues} onChange={setSelectedValues} multiple>
                 <div className="relative mt-1">
                     <Listbox.Button
                         className="relative w-full py-2 pl-3 pr-10 text-left shadow-md bg-white text-primary min-h-[40px]">
-                        <span className={`block ${If(!selectedPeople.length, "text-primary--gray")}`}>
-                            {selectedPeople.length ?
-                                selectedPeople.map(person => person.name).join(", ")
+                        <span className={`block ${If(!selectedValues.length, "text-primary--gray")}`}>
+                            {selectedValues.length ?
+                                selectedValues.map(person => person.name).join(", ")
                                 :
                                 "choose genres"
                             }
@@ -42,7 +34,7 @@ const Select = ({genres}) => {
                     >
                         <Listbox.Options
                             className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                            {people.map((person, personIdx) => (
+                            {items.map((person, personIdx) => (
                                 <Listbox.Option
                                     key={personIdx}
                                     className={({active}) =>

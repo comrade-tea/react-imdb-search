@@ -45,10 +45,10 @@ async function getMovie(id) {
     }
 }
 
-async function getMovies({query, adult, page, year}) {
+async function getMovies({query, adult, page, year, genres}) {
     try {
         const response = await fetch(
-            `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=${adult}&language=en-US&primary_release_year=${year}&page=${page}`,
+            `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=${adult}&language=en-US&primary_release_year=${year}&page=${page}&genre=${genres}`,
             options)
         const json = await response.json();
         // console.log("----", json);
@@ -60,4 +60,19 @@ async function getMovies({query, adult, page, year}) {
 
 }
 
-export {getConfig, getList, getMovie, getMovies}
+async function getGenres() {
+    try {
+        const response = await fetch(
+            `https://api.themoviedb.org/3/genre/movie/list?language=en`,
+            options)
+        const json = await response.json();
+        // console.log("----", json);
+        return json;
+
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+export {getConfig, getList, getMovie, getMovies, getGenres}

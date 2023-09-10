@@ -6,7 +6,7 @@ const Home = () => {
             <div className="mt-10">
                 <p className="text-2xl mb-6">Todo:</p>
                 <ul className="list-disc">
-                    <li>fix notfound poster image (remove blur?)</li>
+                    <li><s>fix notfound poster image (remove blur?)</s></li>
                     <li>router enhance (show query params in url?)</li>
                     <li>sorting</li>
                     <li>search bar</li>

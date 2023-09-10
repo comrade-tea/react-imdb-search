@@ -1,5 +1,5 @@
 import SearchMovie from "@/components/layout/SearchMovie.jsx"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useQuery} from "react-query";
 import {getMovies} from "@/api/getData.js";
 import MovieList from "@/components/pages/MovieList.jsx";
@@ -7,19 +7,22 @@ import {Link} from "react-router-dom";
 
 const MovieIndex = () => {
     const [search, setSearch] = useState({
-        query: "",
         adult: true,
+        genres: [],
         page: 1,
-        year: ""
+        query: "",
+        year: "",
     });
+
+    useEffect(() => {
+        console.table("----", search)
+    }, [search])
     
     const {data, isLoading} = useQuery(
         [`search-${search.query}`, search.page, search.adult, search.year],
         () => getMovies({...search}),
     )
     
-    // todo: query for genres
-
 
     return (
         <div className="grid grid-cols-[260px_minmax(900px,_1fr)] gap-10 relative">
