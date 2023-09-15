@@ -1,32 +1,37 @@
 .card
   $this: &
   display: block
+
   &:hover, &:focus
 
     #{$this}__img-w img
       transform: scale(1.1)
-    
+
   &__img-w
     .lazy-load-image-background
-      background-size: contain !important
-      background-repeat: no-repeat
-      background-position: 50% 50%
-  
+    background-size: contain !important
+    background-repeat: no-repeat
+    background-position: 50% 50%
+
     .lazy-load-image-loaded
       overflow: hidden
+
       img
         transition: transform 2s ease-in !important
-        
+
     img
       text-indent: -10000px
-    
+
   &__head
     display: flex
     justify-content: space-between
     font-family: monospace
     margin: 6px 0
+
   &__date
+
   &__rate
+
   &__title
     overflow: hidden
     display: -webkit-box

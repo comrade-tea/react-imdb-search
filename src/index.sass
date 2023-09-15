@@ -18,13 +18,13 @@
   display: flex
   flex-direction: column
   min-height: 100vh
-  
+
   footer
     margin-top: auto
 
 body
   @apply bg-primary text-white
-  overflow-y: scroll 
+  overflow-y: scroll
 
 section + section
   margin-top: 60px
@@ -33,22 +33,22 @@ section + section
   @apply text-5xl font-semibold mb-20
   &:first-letter
     text-transform: uppercase
-    
+
 .input
   @apply border-primary border text-primary rounded
   width: 100%
   height: 40px
   padding: 0 10px
-  
+
 .table-lined
   @apply w-full text-xl
   td
-    @apply border-b py-2
+    @apply border-b py-4
 
 .link
   @apply transition-colors
   @apply border-b hover:border-transparent
-  
+
 .link-main
   @apply transition-colors
   @apply hover:text-secondary
@@ -59,6 +59,7 @@ section + section
 .link-line
   border-bottom: 1px solid currentColor
   transition: border-color .3s ease
+
   &:hover, &:focus
     border-color: transparent
 
