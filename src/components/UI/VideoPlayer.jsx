@@ -8,7 +8,7 @@ const VideoPlayer = forwardRef((props, ref) => {
 		source,
 		options,
 	})
-	return <video ref={ raptorRef } className="plyr-react plyr" { ...rest } />
+	return <video ref={raptorRef} className="plyr-react plyr" {...rest} />
 })
 
 export default VideoPlayer;

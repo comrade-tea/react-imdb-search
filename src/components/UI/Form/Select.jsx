@@ -12,13 +12,13 @@ const Select = ({options = [], onUpdate, selectedOptions = []}) => {
 
 	return (
 		<div className="">
-			{/*<Listbox value={selectedValues} onChange={setSelectedValues} multiple>*/ }
-			<Listbox value={ selectedOptions } onChange={ onUpdate } multiple>
+			{/*<Listbox value={selectedValues} onChange={setSelectedValues} multiple>*/}
+			<Listbox value={selectedOptions} onChange={onUpdate} multiple>
 				<div className="relative mt-1">
 					<Listbox.Button
 						className="relative w-full py-2 pl-3 pr-10 text-left shadow-md bg-white text-primary min-h-[40px]">
-                        <span className={ `block ${ If(!selectedOptions.length, "text-primary--gray") }` }>
-                            { selectedOptions.length ?
+                        <span className={`block ${If(!selectedOptions.length, "text-primary--gray")}`}>
+                            {selectedOptions.length ?
 										 selectedOptions.map(person => person.name).join(", ")
 										 :
 										 "choose genres"
@@ -32,42 +32,42 @@ const Select = ({options = [], onUpdate, selectedOptions = []}) => {
             </span>
 					</Listbox.Button>
 					<Transition
-						as={ Fragment }
+						as={Fragment}
 						leave="transition ease-in duration-100"
 						leaveFrom="opacity-100"
 						leaveTo="opacity-0"
 					>
 						<Listbox.Options
 							className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-							{ options.map((person, personIdx) => (
+							{options.map((person, personIdx) => (
 								<Listbox.Option
-									key={ personIdx }
-									className={ ({active}) =>
+									key={personIdx}
+									className={({active}) =>
 										`relative cursor-default select-none py-2 pl-10 pr-4 ${
 											active ? 'bg-amber-100 text-amber-900' : 'text-gray-900'
 										}`
 									}
-									value={ person }
+									value={person}
 								>
-									{ ({selected}) => (
+									{({selected}) => (
 										<>
                       <span
-								 className={ `block truncate ${
+								 className={`block truncate ${
 									 selected ? 'font-medium' : 'font-normal'
-								 }` }
+								 }`}
 							 >
-                        { person.name }
+                        {person.name}
                       </span>
-											{ selected ? (
+											{selected ? (
 												<span
 													className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
                           <FaCheck className="h-5 w-5" aria-hidden="true"/>
                         </span>
-											) : null }
+											) : null}
 										</>
-									) }
+									)}
 								</Listbox.Option>
-							)) }
+							))}
 						</Listbox.Options>
 					</Transition>
 				</div>

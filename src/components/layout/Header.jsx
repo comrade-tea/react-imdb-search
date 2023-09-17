@@ -6,18 +6,18 @@ const Header = () => {
 		<header className="header">
 			<div className="header__inner">
 				<a href="/" className="header__logo flex items-center">
-					<img src={ logoSrc } alt="logo"/>
+					<img src={logoSrc} alt="logo"/>
 					<div className="ms-3">RoadFlix 😎</div>
 				</a>
 
 				<Navigation/>
 
-				{/*<div className="header__lang">*/ }
-				{/*    <select>*/ }
-				{/*        <option value="en" selected>en</option>*/ }
-				{/*        <option value="ru">ru</option>*/ }
-				{/*    </select>*/ }
-				{/*</div>*/ }
+				{/*<div className="header__lang">*/}
+				{/*    <select>*/}
+				{/*        <option value="en" selected>en</option>*/}
+				{/*        <option value="ru">ru</option>*/}
+				{/*    </select>*/}
+				{/*</div>*/}
 			</div>
 		</header>
 	)

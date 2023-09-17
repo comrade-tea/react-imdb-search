@@ -6,9 +6,17 @@ const options = {
 	}
 };
 
+const baseUrl = "https://api.themoviedb.org/3";
+
+const buildURL = ({extraPath = "", query = {}}) => {
+	const queryParams = new URLSearchParams({...query});
+
+	return `${baseUrl}${extraPath}?${queryParams.toString()}`;
+}
+
 async function getConfig() {
 	try {
-		const response = await fetch("https://api.themoviedb.org/3/configuration", options);
+		const response = await fetch(`${baseUrl}/configuration`, options);
 		return await response.json();
 	} catch (error) {
 		console.error(error);
@@ -18,7 +26,7 @@ async function getConfig() {
 async function getList(category, page = 1) {
 	try {
 		const response = await fetch(
-			`https://api.themoviedb.org/3/movie/${ category }?language=en-US&page=${ page }`,
+			`${baseUrl}/movie/${category}?language=en-US&page=${page}`,
 			options
 		);
 		const json = await response.json();
@@ -33,7 +41,7 @@ async function getList(category, page = 1) {
 async function getMovie(id) {
 	try {
 		const response = await fetch(
-			`https://api.themoviedb.org/3/movie/${ id }?language=en-US&append_to_response=videos,credits`,
+			`${baseUrl}/movie/${id}?language=en-US&append_to_response=videos,credits`,
 			options
 		);
 		const json = await response.json();
@@ -45,25 +53,41 @@ async function getMovie(id) {
 	}
 }
 
-async function getMovies({query, adult, page, year}) {
+async function getMoviesBySearchQ(props) {
+	// `${baseUrl}/search/movie?query=${query}&include_adult=${adult}&language=en-US&primary_release_year=${year}&page=${page}`
+	console.log("----", buildURL({extraPath: "/search/movie", query: {...props}}));
 	try {
 		const response = await fetch(
-			`https://api.themoviedb.org/3/search/movie?query=${ query }&include_adult=${ adult }&language=en-US&primary_release_year=${ year }&page=${ page }`,
+			buildURL({extraPath: "/search/movie", query: {...props}}),
 			options)
+		
 		const json = await response.json();
-		console.log("----", json);
+		// console.log("----", json);
 		return json;
 
 	} catch (error) {
 		console.error(error);
 	}
+}
 
+async function getMoviesByDiscoverQ(props) {
+	try {
+		const response = await fetch(
+			buildURL({extraPath: "/discover/movie", query: {...props}}),
+			options)
+		const json = await response.json();
+		// console.log("----", json);
+		return json;
+
+	} catch (error) {
+		console.error(error);
+	}
 }
 
 async function getGenres() {
 	try {
 		const response = await fetch(
-			`https://api.themoviedb.org/3/genre/movie/list?language=en`,
+			`${baseUrl}/genre/movie/list?language=en`,
 			options)
 		const json = await response.json();
 		// console.log("----", json);
@@ -75,4 +99,11 @@ async function getGenres() {
 
 }
 
-export { getConfig, getList, getMovie, getMovies, getGenres }
+export {
+	getConfig,
+	getList,
+	getMovie,
+	getGenres,
+	getMoviesBySearchQ,
+	getMoviesByDiscoverQ
+}

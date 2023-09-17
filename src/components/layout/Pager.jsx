@@ -35,26 +35,26 @@ const Pager = memo(({currentPage, totalPages}) => {
 
 	return (
 		<div className="flex items-center justify-end">
-			{ !!prevIndex &&
-				<Link className="link-main me-4" to={ {search: `?page=${ prevIndex }`} }>
-					<FaArrowCircleLeft className={ "text-2xl" }/>
-				</Link> }
+			{!!prevIndex &&
+				<Link className="link-main me-4" to={{search: `?page=${prevIndex}`}}>
+					<FaArrowCircleLeft className={"text-2xl"}/>
+				</Link>}
 
 			<ul className="flex justify-end items-center gap-3">
-				{ pagerArr.map((pageIndex) => (
-					<li key={ pageIndex }>
-						<Link className={ `link-main ${ pageIndex === currentPage ? "active" : "" }` }
-								to={ `?page=${ pageIndex }` }>
-							{ pageIndex }
+				{pagerArr.map((pageIndex) => (
+					<li key={pageIndex}>
+						<Link className={`link-main ${pageIndex === currentPage ? "active" : ""}`}
+								to={`?page=${pageIndex}`}>
+							{pageIndex}
 						</Link>
 					</li>
-				)) }
+				))}
 			</ul>
 
-			{ !!nextIndex &&
-				<Link className="link-main ms-4" to={ {search: `?page=${ nextIndex }`} }>
-					<FaArrowCircleRight className={ "text-2xl" }/>
-				</Link> }
+			{!!nextIndex &&
+				<Link className="link-main ms-4" to={{search: `?page=${nextIndex}`}}>
+					<FaArrowCircleRight className={"text-2xl"}/>
+				</Link>}
 		</div>
 	)
 })
