@@ -6,17 +6,18 @@ import DiscoverForm from "@/components/layout/DiscoverForm.jsx";
 
 const DiscoverPage = () => {
 	const [search, setSearch] = useState({
-		adult: true,
-		genres: [],
-		with_cast: [],
-		vote_average: Number,
-		year: "",
-		page: 1,
+		"with_cast": [],
+		"with_genres": [], 
+		"vote_average.gte": "",
+		"primary_release_year": "",
+		"adult": true,
+		"page": 1,
 	});
 
-	const {data: suitableMovies} = useQuery(
-		[`search-${search.query}`, search.page, search.adult, search.year],
-		() => getMoviesByDiscoverQ({...search}),
+	const {data: suitableMovies} = useQuery({
+			queryKey: search,
+			queryFn: () => getMoviesByDiscoverQ({...search}),
+		}
 	)
 
 	return (

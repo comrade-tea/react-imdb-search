@@ -21,6 +21,7 @@
     "react-lazy-load-image-component": "^1.6.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.12.1",
+    "react-select": "^5.7.4",
     "sass": "^1.63.3",
     "vite-plugin-require": "^1.1.10"
   },

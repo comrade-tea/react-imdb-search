@@ -72,8 +72,10 @@ async function getMoviesBySearchQ(props) {
 
 async function getMoviesByDiscoverQ(props) {
 	try {
+		const request = buildURL({extraPath: "/discover/movie", query: {...props}});
+		// console.log("----", request);
 		const response = await fetch(
-			buildURL({extraPath: "/discover/movie", query: {...props}}),
+			request,
 			options)
 		const json = await response.json();
 		// console.log("----", json);
@@ -96,6 +98,29 @@ async function getGenres() {
 	} catch (error) {
 		console.error(error);
 	}
+}
+
+async function getPerson(query) {
+	const request = buildURL({extraPath: "/search/person", query: {
+			query,
+			include_adult: true,
+			language: "en-US",
+			page: 1
+		}});
+
+	// console.log("----", request)
+	
+	try {
+		const response = await fetch(
+			request, 
+			options)
+		const json = await response.json();
+		// console.log("----", json);
+		return json;
+
+	} catch (error) {
+		console.error(error);
+	}
 
 }
 
@@ -104,6 +129,7 @@ export {
 	getList,
 	getMovie,
 	getGenres,
+	getPerson,
 	getMoviesBySearchQ,
 	getMoviesByDiscoverQ
 }

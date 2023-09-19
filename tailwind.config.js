@@ -13,7 +13,7 @@ export default {
 				md: '728px',
 				lg: '984px',
 				xl: '1240px',
-				'2xl': '1300px',
+				'2xl': '1500px',
 			},
 		},
 		extend: {

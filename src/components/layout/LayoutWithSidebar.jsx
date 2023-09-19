@@ -5,7 +5,7 @@ import GridCards from "@/components/layout/GridCards.jsx";
 
 const LayoutWithSidebar = ({sidebarContent, movies}) => {
 	return (
-		<div className="grid grid-cols-[260px_minmax(900px,_1fr)] gap-10 relative">
+		<div className="grid grid-cols-[340px_minmax(900px,_1fr)] gap-10 relative">
 			<aside className="panel">
 				{sidebarContent}
 			</aside>
