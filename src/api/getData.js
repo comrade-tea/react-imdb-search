@@ -1,135 +1,138 @@
 const options = {
-	method: 'GET',
-	headers: {
-		accept: 'application/json',
-		Authorization: import.meta.env.VITE_ACCESS_TOKEN
-	}
+   method: 'GET',
+   headers: {
+      accept: 'application/json',
+      Authorization: import.meta.env.VITE_ACCESS_TOKEN
+   }
 };
 
 const baseUrl = "https://api.themoviedb.org/3";
 
 const buildURL = ({extraPath = "", query = {}}) => {
-	const queryParams = new URLSearchParams({...query});
+   const queryParams = new URLSearchParams({...query});
 
-	return `${baseUrl}${extraPath}?${queryParams.toString()}`;
+   return `${baseUrl}${extraPath}?${queryParams.toString()}`;
 }
 
 async function getConfig() {
-	try {
-		const response = await fetch(`${baseUrl}/configuration`, options);
-		return await response.json();
-	} catch (error) {
-		console.error(error);
-	}
+   try {
+      const response = await fetch(`${baseUrl}/configuration`, options);
+      return await response.json();
+   } catch (error) {
+      console.error(error);
+   }
 }
 
 async function getList(category, page = 1) {
-	try {
-		const response = await fetch(
-			`${baseUrl}/movie/${category}?language=en-US&page=${page}`,
-			options
-		);
-		const json = await response.json();
-		// console.log("----", json);
-		return json;
+   try {
+      const response = await fetch(
+         `${baseUrl}/movie/${category}?language=en-US&page=${page}`,
+         options
+      );
+      const json = await response.json();
+      // console.log("----", json);
+      return json;
 
-	} catch (error) {
-		console.error(error);
-	}
+   } catch (error) {
+      console.error(error);
+   }
 }
 
 async function getMovie(id) {
-	try {
-		const response = await fetch(
-			`${baseUrl}/movie/${id}?language=en-US&append_to_response=videos,credits`,
-			options
-		);
-		const json = await response.json();
-		// console.log("----", json);
-		return json;
+   try {
+      const response = await fetch(
+         `${baseUrl}/movie/${id}?language=en-US&append_to_response=videos,credits`,
+         options
+      );
+      const json = await response.json();
+      // console.log("----", json);
+      return json;
 
-	} catch (error) {
-		console.error(error);
-	}
+   } catch (error) {
+      console.error(error);
+   }
 }
 
 async function getMoviesBySearchQ(props) {
-	// `${baseUrl}/search/movie?query=${query}&include_adult=${adult}&language=en-US&primary_release_year=${year}&page=${page}`
-	console.log("----", buildURL({extraPath: "/search/movie", query: {...props}}));
-	try {
-		const response = await fetch(
-			buildURL({extraPath: "/search/movie", query: {...props}}),
-			options)
-		
-		const json = await response.json();
-		// console.log("----", json);
-		return json;
+   // `${baseUrl}/search/movie?query=${query}&include_adult=${adult}&language=en-US&primary_release_year=${year}&page=${page}`
+   console.log("----", buildURL({extraPath: "/search/movie", query: {...props}}));
+   try {
+      const response = await fetch(
+         buildURL({extraPath: "/search/movie", query: {...props}}),
+         options)
 
-	} catch (error) {
-		console.error(error);
-	}
+      const json = await response.json();
+      // console.log("----", json);
+      return json;
+
+   } catch (error) {
+      console.error(error);
+   }
 }
 
-async function getMoviesByDiscoverQ(props) {
-	try {
-		const request = buildURL({extraPath: "/discover/movie", query: {...props}});
-		// console.log("----", request);
-		const response = await fetch(
-			request,
-			options)
-		const json = await response.json();
-		// console.log("----", json);
-		return json;
+async function getMoviesByDiscoverQ(props, page) {
+   console.log("----", page);
+   try {
+      const request = buildURL({extraPath: "/discover/movie", query: {...props, page}});
+      console.log("----", request);
+      const response = await fetch(
+         request,
+         options)
+      const json = await response.json();
+      // console.log("----", json);
+      return json;
 
-	} catch (error) {
-		console.error(error);
-	}
+   } catch (error) {
+      console.error(error);
+   }
 }
 
 async function getGenres() {
-	try {
-		const response = await fetch(
-			`${baseUrl}/genre/movie/list?language=en`,
-			options)
-		const json = await response.json();
-		// console.log("----", json);
-		return json;
+   try {
+      const response = await fetch(
+         `${baseUrl}/genre/movie/list?language=en`,
+         options)
+      const json = await response.json();
+      // console.log("----", json);
+      return json;
 
-	} catch (error) {
-		console.error(error);
-	}
+   } catch (error) {
+      console.error(error);
+   }
 }
 
 async function getPerson(query) {
-	const request = buildURL({extraPath: "/search/person", query: {
-			query,
-			include_adult: true,
-			language: "en-US",
-			page: 1
-		}});
+   const request = buildURL({
+      extraPath: "/search/person", query: {
+         query,
+         include_adult: true,
+         language: "en-US",
+         page: 1
+      }
+   });
 
-	// console.log("----", request)
-	
-	try {
-		const response = await fetch(
-			request, 
-			options)
-		const json = await response.json();
-		// console.log("----", json);
-		return json;
+   // console.log("----", request)
 
-	} catch (error) {
-		console.error(error);
-	}
+   try {
+      const response = await fetch(
+         request,
+         options)
+      const json = await response.json();
+      // console.log("----", json);
+      return json;
+
+   } catch (error) {
+      console.error(error);
+   }
 
 }
 
 export {
-	getConfig,
-	getList,
-	getMovie,
-	getGenres,
-	getPerson,
-	getMoviesBySearchQ,
-	getMoviesByDiscoverQ
+   getConfig,
+   getList,
+   getMovie,
+   getGenres,
+   getPerson,
+   getMoviesBySearchQ,
+   getMoviesByDiscoverQ
 }

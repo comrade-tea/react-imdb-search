@@ -4,20 +4,20 @@ import Header from "@/components/layout/Header.jsx";
 import { Footer } from "@/components/layout/Footer.jsx";
 
 const Root = () => {
-	return (
-		<>
-			<Header/>
-			<Breadcrumbs/>
+   return (
+      <>
+         <Header/>
+         <Breadcrumbs/>
 
-			<main className="mb-[50px]">
-				<div className="container">
-					<Outlet/>
-				</div>
-			</main>
+         <main className="mb-[50px]">
+            <div className="container">
+               <Outlet/>
+            </div>
+         </main>
 
-			<Footer/>
-		</>
-	)
+         <Footer/>
+      </>
+   )
 }
 
 export default Root
