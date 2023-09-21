@@ -71,7 +71,6 @@ async function getMoviesBySearchQ(props) {
 }
 
 async function getMoviesByDiscoverQ(props, page) {
-   console.log("----", page);
    try {
       const request = buildURL({extraPath: "/discover/movie", query: {...props, page}});
       console.log("----", request);

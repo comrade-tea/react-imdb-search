@@ -7,12 +7,8 @@ import { useSearchParams } from "react-router-dom";
 
 const DiscoverPage = () => {
    const [searchParams] = useSearchParams();
-   const searchPage = searchParams.get("page");
+   const searchPage = searchParams.get("page") || 1;
 
-   const [pagerData, setPagerData] = useState({
-      page: 1,
-      total_pages: 1
-   });
 
    const [search, setSearch] = useState({
       "with_cast": [],
@@ -22,15 +18,18 @@ const DiscoverPage = () => {
       "vote_average.lte": 10,
       "primary_release_year": "",
       "adult": true,
+      "page": 1,
+      "total_pages": 1,
    });
+   
+   
 
-   const {data: suitableMovies} = useQuery(
+   const {data: suitableMovies, isLoading} = useQuery(
       [search, searchPage],
-      () => getMoviesByDiscoverQ({...search}, pagerData.page),
+      () => getMoviesByDiscoverQ({...search}, searchPage),
       {
          onSuccess: ({page, total_pages}) => {
-            console.log("--DATA DATA DATA--", page, total_pages);
-            setPagerData({page, total_pages})
+            setSearch(prev => ({...prev, page, total_pages }))
          }
       }
    )
@@ -39,8 +38,9 @@ const DiscoverPage = () => {
       <LayoutWithSidebar
          sidebarContent={<DiscoverForm search={search} setSearch={setSearch}/>}
          movies={suitableMovies}
-         pageNum={pagerData.page}
-         totalPages={pagerData.total_pages}
+         page={search.page}
+         totalPages={search.total_pages}
+         isLoading={isLoading}
       />
    )
 }

@@ -3,7 +3,7 @@ import { FaArrowAltCircleLeft, FaArrowCircleLeft, FaArrowCircleRight, FaLongArro
 import { memo } from "react";
 
 const Pager = memo(({currentPage, totalPages}) => {
-   console.log("----", totalPages)
+   // console.log("----", totalPages)
    
    const MAX_ITEMS = 5
 
