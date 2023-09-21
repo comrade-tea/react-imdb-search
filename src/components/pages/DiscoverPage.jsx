@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useQuery } from "react-query";
 import { getMoviesByDiscoverQ } from "@/api/getData.js";
 import LayoutWithSidebar from "@/components/layout/LayoutWithSidebar.jsx";
@@ -6,10 +6,14 @@ import DiscoverForm from "@/components/layout/DiscoverForm.jsx";
 import { useSearchParams } from "react-router-dom";
 
 const DiscoverPage = () => {
-   const [searchParams] = useSearchParams();
+   const [searchParams, setSearchParams] = useSearchParams();
    const searchPage = searchParams.get("page") || 1;
 
-
+   const [pagerNav, setPagerNav] = useState({
+      page: 1,
+      total_pages: 1
+   })
+   
    const [search, setSearch] = useState({
       "with_cast": [],
       "with_genres": [],
@@ -18,9 +22,11 @@ const DiscoverPage = () => {
       "vote_average.lte": 10,
       "primary_release_year": "",
       "adult": true,
-      "page": 1,
-      "total_pages": 1,
    });
+
+   useEffect(() => {
+      setSearchParams(prev => ({...prev, page: 1}))
+   }, [search]);
    
    
 
@@ -29,7 +35,7 @@ const DiscoverPage = () => {
       () => getMoviesByDiscoverQ({...search}, searchPage),
       {
          onSuccess: ({page, total_pages}) => {
-            setSearch(prev => ({...prev, page, total_pages }))
+            setPagerNav(prev => ({...prev, page, total_pages }))
          }
       }
    )
@@ -38,9 +44,9 @@ const DiscoverPage = () => {
       <LayoutWithSidebar
          sidebarContent={<DiscoverForm search={search} setSearch={setSearch}/>}
          movies={suitableMovies}
-         page={search.page}
-         totalPages={search.total_pages}
          isLoading={isLoading}
+         page={pagerNav.page}
+         totalPages={pagerNav.total_pages}
       />
    )
 }
