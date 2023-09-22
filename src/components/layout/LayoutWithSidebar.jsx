@@ -25,7 +25,7 @@ const LayoutWithSidebar = ({sidebarContent, movies, page, totalPages, isLoading}
                {/*      className="link ml-auto">API</Link>*/}
             </div>
 
-            <GridCards movies={movies?.results}/>
+            <GridCards movies={movies?.results} isLoading={isLoading}/>
 
             <div className="mt-10">
                {!isLoading && <Pager currentPage={page} totalPages={totalPages}/>}

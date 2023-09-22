@@ -10,10 +10,11 @@ const Home = () => {
                <li><s>sorting</s></li>
                <li><s>search bar</s></li>
                <li>pager in discover/search pages</li>
-               <li>router enhance (show query params in url?)</li>
+               <li>breadcrumbs fix</li>
                <li>localization</li>
                <li>responsive mode</li>
                <li>?? google auth + watch later list</li>
+               <li>show query params in url (hmm)</li>
             </ul>
          </div>
       </>
