@@ -53,12 +53,11 @@ async function getMovie(id) {
    }
 }
 
-async function getMoviesBySearchQ(props) {
-   // `${baseUrl}/search/movie?query=${query}&include_adult=${adult}&language=en-US&primary_release_year=${year}&page=${page}`
-   console.log("----", buildURL({extraPath: "/search/movie", query: {...props}}));
+async function getMoviesBySearchQ(props, page) {
+   // console.log("----", buildURL({extraPath: "/search/movie", query: {...props, page}}));
    try {
       const response = await fetch(
-         buildURL({extraPath: "/search/movie", query: {...props}}),
+         buildURL({extraPath: "/search/movie", query: {...props, page}}),
          options)
 
       const json = await response.json();

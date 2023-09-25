@@ -9,7 +9,7 @@ const Root = () => {
          <Header/>
          <Breadcrumbs/>
 
-         <main className="mb-[50px]">
+         <main className="mb-[80px]">
             <div className="container">
                <Outlet/>
             </div>

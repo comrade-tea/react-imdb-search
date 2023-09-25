@@ -115,12 +115,6 @@ const DiscoverForm = ({search, setSearch}) => {
                      step={0.1}
                      onAfterChange={ratingHandler}
                   />
-                  {/*<Input*/}
-                  {/*   name="vote_average.gte"*/}
-                  {/*   onChange={(e) => stringHandler(e)}*/}
-                  {/*   value={search["vote_average.gte"]}*/}
-                  {/*   attributes={{placeholder: `Vote average from 0 to 10`}}*/}
-                  {/*/>*/}
                </li>
 
                <li>
@@ -138,7 +132,7 @@ const DiscoverForm = ({search, setSearch}) => {
                </li>
             </ul>
 
-            <button className={"py-2 px-4 bg-accent rounded mt-10 w-full"} type={"submit"}>Submit</button>
+            {/*<button className={"py-2 px-4 bg-accent rounded mt-10 w-full"} type={"submit"}>Submit</button>*/}
          </form>
       </> )
 }

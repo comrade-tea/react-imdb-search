@@ -5,6 +5,7 @@ import Home from "@/components/pages/Home.jsx";
 import MovieByCategoryPage from "@/components/pages/MovieByCategoryPage.jsx";
 import SearchPage from "@/components/pages/SearchPage.jsx";
 import DiscoverPage from "@/components/pages/DiscoverPage.jsx";
+import CategoriesIndex from "@/components/pages/CategoriesIndex.jsx";
 
 
 const router = createBrowserRouter([
@@ -22,18 +23,24 @@ const router = createBrowserRouter([
          {
             index: true,
             path: "/discover",
+            handle: {crumb: () => "discover"},
             element: <DiscoverPage/>
          },
          {
             index: true,
             path: "/search",
+            handle: {crumb: () => "search"},
             element: <SearchPage/>,
          },
 
          {
-            path: "category",
-            handle: {crumb: () => "category"},
+            path: "categories",
+            handle: {crumb: () => "categories"},
             children: [
+               {
+                  index: true,
+                  element: <CategoriesIndex/>,
+               },
                {
                   path: "top-rated",
                   element: <MovieByCategoryPage category={"top_rated"}/>,

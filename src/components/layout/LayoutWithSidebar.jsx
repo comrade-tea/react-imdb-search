@@ -18,11 +18,8 @@ const LayoutWithSidebar = ({sidebarContent, movies, page, totalPages, isLoading}
          <div className="panel">
             <div className="flex justify-between mb-10">
                <h2 className="text-xl font-semibold">Total results: {movies?.total_results}</h2>
-
+               
                <Pager currentPage={page} totalPages={totalPages}/>
-
-               {/*<Link to={"https://developer.themoviedb.org/reference/search-movie"} target={"_blank"}*/}
-               {/*      className="link ml-auto">API</Link>*/}
             </div>
 
             <GridCards movies={movies?.results} isLoading={isLoading}/>

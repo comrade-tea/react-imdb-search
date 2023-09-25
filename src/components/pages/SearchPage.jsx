@@ -2,27 +2,39 @@ import SearchForm from "@/components/layout/SearchForm.jsx"
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { getMoviesBySearchQ } from "@/api/getData.js";
-import { Link } from "react-router-dom";
 import LayoutWithSidebar from "@/components/layout/LayoutWithSidebar.jsx";
+import { useSearchParams } from "react-router-dom";
 
 const SearchPage = () => {
+   const [searchParams, setSearchParams] = useSearchParams();
+   const searchPage = searchParams.get("page") ?? 1;
+   
+   const [pagerNav, setPagerNav] = useState({})
+
    const [search, setSearch] = useState({
-      include_adult: true,
-      query: "",
+      query: "av",
       year: "",
-      page: 1,
+      include_adult: true,
    });
 
 
-   const {data: movies} = useQuery(
-      [`search-${search.query}`, search.page, search.adult, search.year],
-      () => getMoviesBySearchQ({...search}),
+   const {data: suitableMovies, isLoading} = useQuery(
+      [search, searchPage],
+      () => getMoviesBySearchQ({...search}, searchPage),
+      {
+         onSuccess: ({page, total_pages}) => {
+            setPagerNav(prev => ({...prev, page, total_pages }))
+         }
+      }
    )
 
    return (
       <LayoutWithSidebar
          sidebarContent={<SearchForm search={search} setSearch={setSearch}/>}
-         movies={movies}
+         movies={suitableMovies}
+         isLoading={isLoading}
+         page={pagerNav.page}
+         totalPages={pagerNav.total_pages}
       />
    )
 }

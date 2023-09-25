@@ -28,7 +28,6 @@ const DiscoverPage = () => {
       setSearchParams(prev => ({...prev, page: 1}))
    }, [search]);
    
-   
 
    const {data: suitableMovies, isLoading} = useQuery(
       [search, searchPage],

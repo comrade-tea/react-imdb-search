@@ -12,8 +12,9 @@ const CardMovie = ({movie}) => {
             <LazyLoadImage
                src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
                effect={movie.poster_path ? "blur" : null}
-               width={280}
-               height={420}
+               // width={280}
+               // height={420}
+               wrapperClassName={"card-preview-lazy-wrap"}
                placeholderSrc={notfoundImg}
             />
          </div>

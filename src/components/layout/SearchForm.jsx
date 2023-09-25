@@ -50,7 +50,7 @@ const SearchForm = ({search, setSearch}) => {
             </li>
          </ul>
 
-         <button className={"py-2 px-4 bg-accent rounded mt-10 w-full"} type={"submit"}>Submit</button>
+         {/*<button className={"py-2 px-4 bg-accent rounded mt-10 w-full"} type={"submit"}>Submit</button>*/}
       </form>
    </div>
 }

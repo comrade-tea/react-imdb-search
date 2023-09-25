@@ -23,6 +23,8 @@ const MovieDetailsPage = () => {
    const movieTime = toHoursAndMinutes(data?.runtime);
    const hasVideos = data?.videos?.results?.length > 0;
 
+   const heroPosterSrc = `${IMG_CONFIG.base_url}${IMG_CONFIG.backdrop_size}${data?.backdrop_path ?? data?.poster_path}`;
+
    return (
       <div>
          {isLoading && <Loader/>}
@@ -33,10 +35,12 @@ const MovieDetailsPage = () => {
                   <FaArrowLeft className={"mr-4"}/> Назад
                </button>
 
-               <div className="hero" style={{aspectRatio: "16/9"}}>
-                  <img className="hero__img"
-                       src={`${IMG_CONFIG.base_url}${IMG_CONFIG.backdrop_size}${data.backdrop_path ?? data.poster_path}`}
-                       alt=""/>
+               <div className="hero">
+                  
+                  <img className="hero__img" src={heroPosterSrc} alt=""/>
+                  <img className="hero__bg" src={heroPosterSrc} alt=""/>
+
+
                   <h1 className="hero__title text-6xl font-bold">{data.title}</h1>
 
                   <ul className="hero__genres genres">

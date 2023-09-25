@@ -1,23 +1,23 @@
 .card
   $this: &
   display: block
+  flex: 1
 
   &:hover, &:focus
-
     #{$this}__img-w img
-      transform: scale(1.1)
+      filter: sepia(.4)
+      transform: scale(1.04)
 
   &__img-w
     .lazy-load-image-background
-    background-size: contain !important
-    background-repeat: no-repeat
-    background-position: 50% 50%
+      background-size: contain !important
+      background-repeat: no-repeat
+      background-position: 50% 50%
 
     .lazy-load-image-loaded
       overflow: hidden
-
       img
-        transition: transform 2s ease-in !important
+        transition: transform .3s ease-in, filter .34s ease !important
 
     img
       text-indent: -10000px
@@ -33,6 +33,8 @@
   &__rate
 
   &__title
+    @apply text-xl font-semibold
+    
     overflow: hidden
     display: -webkit-box
     -webkit-line-clamp: 3
