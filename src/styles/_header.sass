@@ -1,19 +1,56 @@
 .header
-  //@apply bg-secondary text-primary
+  @apply fixed z-10 lg:static
+  @apply bg-primary top-0 left-0 
   @apply border-b-primary--light border-b-2
 
+  display: flex
+  align-items: center
   width: 100%
-  padding: 20px 0
+  height: var(--header-height)
 
   &__inner
     @apply container
     display: flex
     justify-content: space-between
+    align-items: center
 
   &__nav
-    display: flex
+    @apply hidden sw:flex
     gap: 30px
 
+  &__hamburger
+    @apply block sw:hidden
+
+
+.nav
+  &:not(.header__nav)
+    @apply flex flex-col gap-8 sw:block
+
   &__link
+    display: block
+    @apply text-4xl sw:text-base
     &.active
-      color: red
+      @apply text-secondary
+
+.mobile-menu
+  @apply flex sw:hidden
+  align-items: center
+  justify-content: center
+  overscroll-behavior: contain // test
+
+  opacity: 0
+  visibility: hidden
+  
+  position: fixed
+  top: var(--header-height)
+  left: 0
+  width: 100%
+  height: calc(100vh - var(--header-height))
+  @apply bg-black bg-opacity-90
+  transition: all .2s ease
+  z-index: 1
+  padding: 0 30px
+
+  &--active
+    opacity: 1
+    visibility: visible

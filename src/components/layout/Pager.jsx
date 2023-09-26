@@ -1,15 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { FaArrowAltCircleLeft, FaArrowCircleLeft, FaArrowCircleRight, FaLongArrowAltLeft } from "react-icons/fa";
 import { memo } from "react";
+import { getUrlQueries } from "@/utils/utils.js";
+
+const updateUrlQuery = (params, key, value) => {
+   const newParams = new URLSearchParams(params)
+   newParams.set(key, value)
+   return newParams
+}
 
 const Pager = memo(({currentPage, totalPages}) => {
-   // console.log("----", totalPages)
-   
+   // console.log("--from pager--", currentPage, totalPages)
+   const [searchParams, setSearchParams] = useSearchParams();
+   const params = getUrlQueries(searchParams);
+
+   currentPage = parseInt(currentPage)
+   totalPages = parseInt(totalPages)
+
    const MAX_ITEMS = 5
 
    const prevIndex = currentPage - 1 > 0 ? currentPage - 1 : null;
    const nextIndex = currentPage + 1 < totalPages ? currentPage + 1 : null;
-
+   
+   
    const generatePager = (number, maximum) => {
       const result = [];
       let start = Math.max(1, number - 2);
@@ -38,7 +51,7 @@ const Pager = memo(({currentPage, totalPages}) => {
    return (
       <div className="flex items-center justify-end">
          {!!prevIndex &&
-            <Link className="link-main me-4" to={{search: `?page=${prevIndex}`}}>
+            <Link className="link-main me-4" to={{search: `?${updateUrlQuery(params, "page", prevIndex)}`}}>
                <FaArrowCircleLeft className={"text-2xl"}/>
             </Link>}
 
@@ -46,7 +59,7 @@ const Pager = memo(({currentPage, totalPages}) => {
             {pagerArr.map((pageIndex) => (
                <li key={pageIndex}>
                   <Link className={`link-main ${pageIndex === currentPage ? "active" : ""}`}
-                        to={`?page=${pageIndex}`}>
+                        to={`?${updateUrlQuery(params, "page", pageIndex)}`}>
                      {pageIndex}
                   </Link>
                </li>
@@ -54,7 +67,7 @@ const Pager = memo(({currentPage, totalPages}) => {
          </ul>
 
          {!!nextIndex &&
-            <Link className="link-main ms-4" to={{search: `?page=${nextIndex}`}}>
+            <Link className="link-main ms-4" to={{search: `?${updateUrlQuery(params, "page", nextIndex)}`}}>
                <FaArrowCircleRight className={"text-2xl"}/>
             </Link>}
       </div>

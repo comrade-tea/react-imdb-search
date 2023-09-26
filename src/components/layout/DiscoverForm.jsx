@@ -64,7 +64,7 @@ const DiscoverForm = ({search, setSearch}) => {
    return (
       <>
          <h3 className={"text-xl font-semibold mb-5"}>Discover:</h3>
-
+         
          <form>
             <ul className="flex flex-col gap-3">
                <li>

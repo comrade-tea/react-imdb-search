@@ -1,26 +1,34 @@
 import { Input } from "@/components/UI/Form/Input.jsx"
-import Select from "@/components/UI/Form/Select.jsx";
 import { useCallback, useState } from "react";
 import Checkbox from "@/components/UI/Form/Checkbox/Checkbox.jsx";
-import { useQuery } from "react-query";
-import { getGenres } from "@/api/getData.js";
+import { useSearchParams } from "react-router-dom";
 
 
 const SearchForm = ({search, setSearch}) => {
-   const [selectedGenres, setSelectedGenres] = useState([])
-   const {data, status} = useQuery("genres", getGenres)
+   const [searchParams, setSearchParams] = useSearchParams()
+   
+   const include_adult = searchParams.get("include_adult") === "true"
 
    const searchHandler = (e) => {
-      setSearch(prev => ( {...prev, query: e.target.value} ))
+      setSearchParams(prev => {
+         prev.set("query", e.target.value)
+         return prev
+      })
    };
 
    const yearHandler = (e) => {
-      setSearch(prev => ( {...prev, year: e.target.value} ))
+      setSearchParams(prev => {
+         prev.set("year", e.target.value)
+         return prev
+      })
    };
 
-   const onCheckboxChange = useCallback(() => {
-      setSearch(prev => ( {...prev, include_adult: !prev.include_adult} ))
-   }, []);
+   const onCheckboxChange = () => {
+      setSearchParams((prev) => {
+         prev.set("include_adult", !include_adult)
+         return prev;
+      })
+   };
 
    return <div>
       <h3 className={"text-xl font-semibold mb-5"}>Search:</h3>
@@ -31,7 +39,7 @@ const SearchForm = ({search, setSearch}) => {
                <div className="mb-2">Movie title:</div>
                <Input
                   onChange={(e) => searchHandler(e)}
-                  value={search.query}
+                  value={searchParams.get("query")}
                   attributes={{placeholder: "Movie title"}}
                />
             </li>
@@ -40,13 +48,13 @@ const SearchForm = ({search, setSearch}) => {
                <div className="mb-2">Release year:</div>
                <Input
                   onChange={(e) => yearHandler(e)}
-                  value={search.year}
+                  value={searchParams.get("year")}
                   attributes={{placeholder: `Primary year | ex: 1998`}}
                />
             </li>
 
             <li>
-               <Checkbox label={"Include adult"} checked={search.include_adult} onChange={onCheckboxChange}/>
+               <Checkbox label={"Include adult"} checked={include_adult} onChange={onCheckboxChange}/>
             </li>
          </ul>
 

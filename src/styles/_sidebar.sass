@@ -4,14 +4,10 @@
   @at-root #{selector.unify(&, $child)}
     @content
 
-
-.panel
-  @apply py-7 px-5 rounded-xl border-2 border-accent
-  position: sticky
+.sidebar
+  @apply lg:sticky
   top: 10px
-  //height: 100%
-
-  +unify-parent("aside")
-    align-self: self-start
-    
-    
+  align-self: self-start
+  
+.panel
+  @apply py-7 px-5 rounded-xl border-2 border-accent 

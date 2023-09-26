@@ -8,7 +8,7 @@ const GridCards = ({movies = [], columns = 3, isLoading = false}) => {
 
    return (
       movies?.length ?
-         <ul className={`grid-movies grid-movies--${columns} gap-[40px]`}>
+         <ul className={`grid-movies grid-movies--${columns}`}>
             {movies.map(movie => (
                <li className="flex" key={movie.id}>
                   <CardMovie movie={movie}/>

@@ -11,4 +11,19 @@ const If = (condition, cssTrue, cssFalse = "") => condition ? cssTrue : cssFalse
 
 const stringClean = (string) => string.replace(/_/g, " ")
 
-export { toHoursAndMinutes, If, stringClean, notfoundSrc }
+const getUrlQueries = (searchParams) => {
+   const params = [];
+   for (const entry of searchParams.entries()) {
+      params.push(entry)
+   }
+
+   return params
+}
+
+export {
+   toHoursAndMinutes,
+   If,
+   stringClean,
+   notfoundSrc,
+   getUrlQueries
+}

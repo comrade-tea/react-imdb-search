@@ -7,9 +7,9 @@ const Root = () => {
    return (
       <>
          <Header/>
-         <Breadcrumbs/>
 
-         <main className="mb-[80px]">
+         <main className="main">
+            <Breadcrumbs/>
             <div className="container">
                <Outlet/>
             </div>

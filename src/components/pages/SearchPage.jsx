@@ -6,35 +6,39 @@ import LayoutWithSidebar from "@/components/layout/LayoutWithSidebar.jsx";
 import { useSearchParams } from "react-router-dom";
 
 const SearchPage = () => {
-   const [searchParams, setSearchParams] = useSearchParams();
-   const searchPage = searchParams.get("page") ?? 1;
-   
-   const [pagerNav, setPagerNav] = useState({})
-
-   const [search, setSearch] = useState({
+   const [searchParams, setSearchParams] = useSearchParams({
       query: "av",
       year: "",
       include_adult: true,
+      page: 1,
    });
 
+   const [totalPages, setTotalPages] = useState(1); 
+   
+   const query = searchParams.get("query") ?? ""
+   const year = searchParams.get("year") ?? ""
+   const include_adult = searchParams.get("include_adult") === "true"
+   const page = searchParams.get("page") ?? 1
 
    const {data: suitableMovies, isLoading} = useQuery(
-      [search, searchPage],
-      () => getMoviesBySearchQ({...search}, searchPage),
+      [query, year, include_adult, page],
+      () => getMoviesBySearchQ({query, year, include_adult}, page),
       {
          onSuccess: ({page, total_pages}) => {
-            setPagerNav(prev => ({...prev, page, total_pages }))
+            // setSearchParams(prev => ({...prev, page }))
+            setSearchParams({query, year, include_adult, page})
+            setTotalPages(total_pages)
          }
       }
    )
 
    return (
       <LayoutWithSidebar
-         sidebarContent={<SearchForm search={search} setSearch={setSearch}/>}
+         sidebarContent={<SearchForm search={searchParams} setSearch={setSearchParams}/>}
          movies={suitableMovies}
          isLoading={isLoading}
-         page={pagerNav.page}
-         totalPages={pagerNav.total_pages}
+         page={page}
+         totalPages={totalPages}
       />
    )
 }

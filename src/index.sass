@@ -14,6 +14,8 @@
 @import "styles/components/button"
 @import "styles/components/loader"
 
+\:root
+  --header-height: 74px
 
 #root
   display: flex
@@ -26,12 +28,18 @@
 body
   @apply bg-primary text-white
   overflow-y: scroll
+  min-width: 320px
+
+.main
+  @apply pt-[var(--header-height)] lg:pt-0
+  margin-bottom: 80px
+  
 
 section + section
   margin-top: 60px
 
 .section-title
-  @apply text-5xl font-semibold mb-20
+  @apply text-3xl md:text-5xl font-semibold mb-10 md:mb-20
   &:first-letter
     text-transform: uppercase
 
@@ -44,7 +52,9 @@ section + section
 .table-lined
   @apply w-full text-xl
   td
-    @apply border-b py-4
+    @apply border-b py-4 w-1/2
+    &:first-letter
+      text-transform: uppercase
 
 .link
   @apply transition-colors

@@ -3,9 +3,12 @@
   background-repeat: no-repeat
   background-size: cover
   aspect-ratio: 16/9
+  width: 100%
+  min-height: 340px
   overflow: hidden
 
   &:after
+    @apply hidden xs:block
     content: ""
     position: absolute
     bottom: 0
@@ -17,8 +20,10 @@
 
   &__img
     max-height: 80vh
-    min-height: 500px
+    height: 100%
     margin: 0 auto
+    object-fit: cover
+    object-position: 50% 50%
   //
   &__bg
     position: absolute
@@ -31,10 +36,12 @@
     object-fit: cover
 
   &__title
+    @apply text-4xl lg:text-6xl font-bold
+    @apply hidden xs:block
     position: absolute
+    max-width: 60%
     bottom: 20px
     left: 20px
-    max-width: 70%
     z-index: 1
 
   &__genres
@@ -44,11 +51,12 @@
     z-index: 1
 
 .genres
-  display: flex
+  @apply hidden sm:flex
   gap: 12px
 
 
 .grid-video
+  @apply flex flex-col gap-[30px] md:flex-row
   display: flex
 
   &__col
@@ -56,18 +64,17 @@
       flex: 1
 
     &--list
+      @apply md:basis-[330px]
       position: relative
       display: flex
       flex-direction: column
-      flex: 0 0 330px
-      padding-left: 30px
 
 
 .video-list
+  @apply md:absolute
   display: flex
   flex-direction: column
   gap: 10px
-  position: absolute
   top: 0
   left: 0
   width: 100%
@@ -75,7 +82,7 @@
   overflow: auto
 
   &__item
-    padding: 0 10px 0 20px
+    @apply md:pt-[10px] md:pl-[20px]
 
 .card-preview-lazy-wrap
   position: relative

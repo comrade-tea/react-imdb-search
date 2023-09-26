@@ -1,15 +1,12 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({inHeader, handleCloseMobileNav = () => {}}) => {
    return (
-      <nav className="header__nav">
-         <NavLink className="header__link" to={"/"}>Home</NavLink>
-         <NavLink className="header__link" to={"/discover"}>Discover</NavLink>
-         <NavLink className="header__link" to={"/search"}>Search</NavLink>
-         <NavLink className="header__link" to={"/categories"}>Categories</NavLink>
-         {/*<NavLink className="header__link" to={"/category/top-rated"}>Top rated</NavLink>*/}
-         {/*<NavLink className="header__link" to={"/category/popular"}>Popular</NavLink>*/}
-         {/*<NavLink className="header__link" to={"/category/now-playing"}>Now playing</NavLink>*/}
+      <nav className={`nav ${inHeader ? "header__nav" : ""}`}>
+         <NavLink className="nav__link" onClick={handleCloseMobileNav} to={"/"}>Home</NavLink>
+         <NavLink className="nav__link" onClick={handleCloseMobileNav} to={"/discover"}>Discover</NavLink>
+         <NavLink className="nav__link" onClick={handleCloseMobileNav} to={"/search"}>Search</NavLink>
+         <NavLink className="nav__link" onClick={handleCloseMobileNav} to={"/categories"}>Categories</NavLink>
       </nav>
    )
 }
