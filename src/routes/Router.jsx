@@ -1,4 +1,4 @@
-import { createBrowserRouter, Link, Outlet } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, Link, Outlet } from "react-router-dom";
 import Root from "@/routes/root.jsx";
 import MovieDetailsPage, { MovieDetailsLoader } from "@/components/pages/MovieDetailsPage.jsx";
 import Home from "@/components/pages/Home.jsx";
@@ -8,7 +8,8 @@ import DiscoverPage from "@/components/pages/DiscoverPage.jsx";
 import CategoriesIndex from "@/components/pages/CategoriesIndex.jsx";
 
 
-const router = createBrowserRouter([
+// const router = createBrowserRouter([
+const router = createHashRouter([
    {
       path: "/",
       element: <Root/>,

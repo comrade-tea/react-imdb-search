@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 
 const SearchPage = () => {
    const [searchParams, setSearchParams] = useSearchParams({
-      query: "av",
+      query: "",
       year: "",
       include_adult: true,
       page: 1,

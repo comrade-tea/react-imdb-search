@@ -13,7 +13,7 @@ const Header = () => {
             <div className="header__inner">
                <a href="/" className="header__logo flex items-center">
                   <img src={logoSrc} alt="logo"/>
-                  <div className="text-xl ms-3">RoadFlix</div>
+                  <div className="text-xl ms-3">MovieFlix</div>
                </a>
 
                <Navigation inHeader={true}/>

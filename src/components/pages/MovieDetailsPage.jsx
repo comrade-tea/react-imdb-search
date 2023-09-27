@@ -62,7 +62,7 @@ const MovieDetailsPage = () => {
                      <h4 className="subtitle">Cast:</h4>
                      <ul className="list-inside list-disc">
                         {data.credits?.cast?.slice(0, 5).map(actor => (
-                           <li key={actor.id}>{actor.name}</li> )
+                           <li key={actor.id}>{actor.name}</li> ) 
                         )}
                      </ul>
 
@@ -70,10 +70,10 @@ const MovieDetailsPage = () => {
                         {/*<button className="btn btn--light mt-5" onClick={() => setTest(test + 1)} type="button">*/}
                         {/*   <FaMagnet className="me-2"/> counter: {test}*/}
                         {/*</button>*/}
-                        <a className="btn btn--light " href={`https://www.imdb.com/title/${data.imdb_id}/`}
-                           target="_blank" rel="noreferrer">
+                        {data.imdb_id && <a className="btn btn--light " href={`https://www.imdb.com/title/${data.imdb_id}/`}
+                                 target="_blank" rel="noreferrer">
                            <FaExternalLinkAlt className="me-2"/> movie on imdb
-                        </a>
+                        </a>}
                      </div>
                   </div>
 

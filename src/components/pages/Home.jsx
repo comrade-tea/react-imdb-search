@@ -1,7 +1,7 @@
 const Home = () => {
    return (
       <>
-         <h1 className="text-5xl">Welcome 2 the roadflix !11</h1>
+         <h1 className="text-5xl">Welcome 🌹</h1>
 
          <div className="mt-10">
             <p className="text-2xl mb-6">Todo:</p>
@@ -11,7 +11,8 @@ const Home = () => {
                <li><s>search bar</s></li>
                <li><s>breadcrumbs fix</s></li>
                <li><s>pager in discover/search pages</s></li>
-               <li>responsive mode</li>
+               <li><s>responsive mode</s> sticky sidebar on mobile</li>
+               <li>optimize queries on search page (do something with consts?)</li>
                <li>localization</li>
                <li>query params on discover / <s>search</s></li>
                <li>?? google auth + watch later list</li>
