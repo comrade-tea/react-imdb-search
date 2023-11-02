@@ -6,7 +6,6 @@ import requireTransform from 'vite-plugin-require-transform';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: "/movieflix/",
     plugins: [
         react(),
         requireTransform({}),

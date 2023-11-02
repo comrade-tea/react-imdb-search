@@ -11,11 +11,16 @@ const updateUrlQuery = (params, key, value) => {
 
 const Pager = memo(({currentPage, totalPages}) => {
    // console.log("--from pager--", currentPage, totalPages)
-   const [searchParams, setSearchParams] = useSearchParams();
-   const params = getUrlQueries(searchParams);
-
    currentPage = parseInt(currentPage)
    totalPages = parseInt(totalPages)
+   
+   if (totalPages === 1)
+      return
+   
+   const [searchParams, setSearchParams] = useSearchParams();
+   const params = getUrlQueries(searchParams);
+   
+   
 
    const MAX_ITEMS = 5
 
