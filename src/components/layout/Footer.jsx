@@ -20,7 +20,7 @@ export const Footer = () => {
                         <FaGithub className="me-2" size={18}/> source files
                      </a>
                      <div>created by <a className={"link-line whitespace-nowrap"}
-                                        href={"https://comrade-tea.github.io/"}
+                                        href={"https://comrade-tea-projects.netlify.app"}
                                         target="_blank" rel="noreferrer">comrade-tea</a>
                      </div>
                   </div>
