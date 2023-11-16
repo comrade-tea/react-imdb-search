@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const MovieByCategoryPage = ({category}) => {
    const [searchParams] = useSearchParams();
-   const searchPage = searchParams.get("page");
+   const searchPage = searchParams.get("page") || 1;
 
    const [currentPage, setCurrentPage] = useState(1);
    const [totalPages, setTotalPages] = useState(1);
@@ -25,32 +25,30 @@ const MovieByCategoryPage = ({category}) => {
          }
       }
    )
-
+   
    return (
-      <>
-         <section>
-            <div className="flex justify-between select-none mb-20">
-               <h3 className="section-title" style={{marginBottom: 0}}>
-                  {stringClean(category)}
-               </h3>
+      <section>
+         <div className="flex justify-between select-none mb-20">
+            <h3 className="section-title" style={{marginBottom: 0}}>
+               {stringClean(category)}
+            </h3>
 
-               <Pager currentPage={currentPage} totalPages={totalPages}/>
-            </div>
+            <Pager currentPage={currentPage} totalPages={totalPages}/>
+         </div>
 
-            {isLoading ?
-               <Loader/>
-               :
-               <>
-                  <GridCards movies={data.results} columns={4}/>
+         {isLoading ?
+            <Loader/>
+            :
+            <>
+               <GridCards movies={data.results} columns={4}/>
 
-                  <div className="mt-10">
-                     <Pager currentPage={currentPage} totalPages={totalPages}/>
-                  </div>
-               </>
-            }
-
-         </section>
-      </>
+               <div className="mt-10">
+                  <Pager currentPage={currentPage} totalPages={totalPages}/>
+               </div>
+            </>
+         }
+         
+      </section>
    )
 }
 export default MovieByCategoryPage
