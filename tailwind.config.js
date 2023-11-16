@@ -14,7 +14,8 @@
       },
       container: {
          center: true,
-         padding: "30px",
+         // padding: "30px",
+         padding: "max(6vw, 30px)",
          screens: {
             xl: '1240px',
             '2xl': '1500px',

@@ -1,7 +1,7 @@
 const Home = () => {
    return (
       <>
-         <h1 className="text-5xl">Welcome 🌹</h1>
+         <h1 className="text-5xl">Welcome</h1>
 
          <div className="mt-10">
             <p className={"text-2xl max-w-[700px] mb-10"}>Used stack: vite.js, react.js, tailwind.js, tmdb API
