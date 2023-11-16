@@ -1,6 +1,6 @@
-import { createBrowserRouter, createHashRouter, Link, Outlet } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, ScrollRestoration } from "react-router-dom";
 import Root from "@/routes/root.jsx";
-import MovieDetailsPage, { MovieDetailsLoader } from "@/components/pages/MovieDetailsPage.jsx";
+import MovieDetailsPage from "@/components/pages/MovieDetailsPage.jsx";
 import Home from "@/components/pages/Home.jsx";
 import MovieByCategoryPage from "@/components/pages/MovieByCategoryPage.jsx";
 import SearchPage from "@/components/pages/SearchPage.jsx";
